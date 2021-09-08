@@ -9,12 +9,12 @@ logs_id = Config.FBAN_LOG_GROUP
 fbot = "@MissRose_bot"
 
 
-@bot.on(deadly_cmd(pattern="newfed ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="newfed ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="newfed ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    deadly_input = event.pattern_match.group(1)
+    visa_input = event.pattern_match.group(1)
     chat = "@MissRose_Bot"
     await eor(event, "`Making new fed...`")
     async with bot.conversation(chat) as conv:
@@ -22,7 +22,7 @@ async def _(event):
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=609517172)
             )
-            await event.client.send_message(chat, f"/newfed {deadly_input}")
+            await event.client.send_message(chat, f"/newfed {visa_input}")
             response = await response
         except YouBlockedUserError:
             await eod(event, "`Please unblock` @MissRose_Bot `and try again`")
@@ -35,18 +35,18 @@ async def _(event):
             await eod(event, f"{response.message.message}", 7)
 
 
-@bot.on(deadly_cmd(pattern="renamefed ?(.*)"))
+@bot.on(visa_cmd(pattern="renamefed ?(.*)"))
 @bot.on(sudo_cmd(pattern="renamefed ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return 
-    deadly_input = event.pattern_match.group(1)
+    visa_input = event.pattern_match.group(1)
     chat = "@MissRose_Bot"
     await event.edit("`Trying to rename your fed...`")
     async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=609517172))
-              await event.client.send_message(chat, f"/renamefed {deadly_input}")
+              await event.client.send_message(chat, f"/renamefed {visa_input}")
               response = await response 
           except YouBlockedUserError: 
               await event.reply("Please Unblock @MissRose_Bot")
@@ -56,13 +56,13 @@ async def _(event):
              await event.client.send_message(event.chat_id, response.message)
 
 
-@bot.on(deadly_cmd(pattern="fstat ?(.*)"))
+@bot.on(visa_cmd(pattern="fstat ?(.*)"))
 @bot.on(sudo_cmd(pattern="fstat ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    deadly = await eor(event, "`Collecting fstat....`")
-    thumb = deadly_logo
+    visa = await eor(event, "`Collecting fstat....`")
+    thumb = visa_logo
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         lavde = str(previous_message.sender_id)
@@ -71,7 +71,7 @@ async def _(event):
         lavde = event.pattern_match.group(1)
         user = lavde
     if lavde == "":
-        await deadly.edit(
+        await visa.edit(
             "`Need username/id to check fstat`"
         )
         return
@@ -85,15 +85,15 @@ async def _(event):
                 await bot.send_message(event.chat_id, response)
                 await event.delete()
             except YouBlockedUserError:
-                await deadly.edit("`Please Unblock` @MissRose_Bot")
+                await visa.edit("`Please Unblock` @MissRose_Bot")
 
 
-@bot.on(deadly_cmd(pattern="fedinfo ?(.*)"))
+@bot.on(visa_cmd(pattern="fedinfo ?(.*)"))
 @bot.on(sudo_cmd(pattern="fedinfo ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    deadly = await eor(event, "`Fetching fed info.... please wait`")
+    visa = await eor(event, "`Fetching fed info.... please wait`")
     lavde = event.pattern_match.group(1)
     async with bot.conversation(fbot) as conv:
         try:
@@ -101,9 +101,9 @@ async def _(event):
             await conv.get_response()
             await conv.send_message("/fedinfo " + lavde)
             massive = await conv.get_response()
-            await deadly.edit(massive.text + "\n\n**ʟɛɢɛռɖaʀʏ_ᴀғ_ɦɛʟʟɮօt**")
+            await visa.edit(massive.text + "\n\n**ʟɛɢɛռɖaʀʏ_ᴀғ_ɦɛʟʟɮօt**")
         except YouBlockedUserError:
-            await deadly.edit("`Please Unblock` @MissRose_Bot")
+            await vissa.edit("`Please Unblock` @MissRose_Bot")
 
 
 # op superfban by sameer op
@@ -114,7 +114,7 @@ from telethon.errors import ChatAdminRequiredError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.users import GetFullUserRequest
 
-from VisaXBot.utils import deadly_cmd, edit_or_reply, sudo_cmd
+from VisaXBot.utils import visa_cmd, edit_or_reply, sudo_cmd
 DEFAULTUSER = Config.YOUR_NAME
 
 VisaXBot = bot.uid
@@ -129,7 +129,7 @@ if G_BAN_LOGGER_GROUP:
     G_BAN_LOGGER_GROUP = int(G_BAN_LOGGER_GROUP)
 
 
-@bot.on(deadly_cmd("superfban ?(.*)"))
+@bot.on(visa_cmd("superfban ?(.*)"))
 @bot.on(sudo_cmd("superfban ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
