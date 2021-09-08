@@ -16,7 +16,7 @@ from telethon.tl.types import Channel, Chat, InputPhoto, User
 from . import *
 
 
-@bot.on(deadly_cmd(pattern="join (.*)"))
+@bot.on(visa_cmd(pattern="join (.*)"))
 @bot.on(sudo_cmd(pattern="join (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -29,7 +29,7 @@ async def _(event):
     except Exception as e:
         await event.edit(str(e))
         
-@bot.on(deadly_cmd(pattern="leave (.*)"))
+@bot.on(visa_cmd(pattern="leave (.*)"))
 @bot.on(sudo_cmd(pattern="leave (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
