@@ -5,7 +5,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 
 from . import *
 
-@bot.on(deadly_cmd(pattern="extdl$", outgoing=True))
+@bot.on(visa_cmd(pattern="extdl$", outgoing=True))
 @bot.on(sudo_cmd(pattern="extdl$", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
@@ -39,13 +39,13 @@ async def install(event):
             )
 
 
-@bot.on(deadly_cmd(pattern=r"installall (.*)"))
+@bot.on(visa_cmd(pattern=r"installall (.*)"))
 @bot.on(sudo_cmd(pattern=r"installall (.*)", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
         return
     chat = event.pattern_match.group(1)
-    deadly = await eor(event, f"Starting To Install Plugins From {chat} !!"
+    visa = await eor(event, f"Starting To Install Plugins From {chat} !!"
     )
     documentss = await bot.get_messages(chat, None, filter=InputMessagesFilterDocument)
     total = int(documentss.total)
