@@ -1,6 +1,6 @@
 from . import *
 
-@bot.on(deadly_cmd(pattern="carry (.*)"))
+@bot.on(visa_cmd(pattern="carry (.*)"))
 @bot.on(sudo_cmd(pattern="carry (.*)", allow_sudo=True))
 async def kraken(carry):
     if carry.fwd_from:
@@ -12,7 +12,7 @@ async def kraken(carry):
     )
 
 
-@bot.on(deadly_cmd(pattern="ded (.*)"))
+@bot.on(visa_cmd(pattern="ded (.*)"))
 @bot.on(sudo_cmd(pattern="ded (.*)", allow_sudo=True))
 async def kraken(ded):
     if ded.fwd_from:
@@ -20,7 +20,7 @@ async def kraken(ded):
     name = ded.pattern_match.group(1)
     await edit_or_reply(
         ded,
-        f"{deadly_mention} --- {name}          \n　　　　　|"
+        f"{visa_mention} --- {name}          \n　　　　　|"
         "\n　　　　　| \n"
         "　　　　　| \n"
         "　　　　　| \n"
@@ -53,14 +53,14 @@ A = (
 )
 
 
-@bot.on(deadly_cmd(pattern="sthink (.*)"))
+@bot.on(visa_cmd(pattern="sthink (.*)"))
 @bot.on(sudo_cmd(pattern="sthink (.*)", allow_sudo=True))
 async def kraken(think):
     if think.fwd_from:
         return
     name = think.pattern_match.group(1)
     B = (
-        f"**{deadly_mention} ~> {name} .\n\n**"
+        f"**{visa_mention} ~> {name} .\n\n**"
         "⠀⠀⠀⠀⢀⣀⣀⣀\n"
         "⠀⠀⠀⠰⡿⠿⠛⠛⠻⠿⣷\n"
         "⠀⠀⠀⠀⠀⠀⣀⣄⡀⠀⠀⠀⠀⢀⣀⣀⣤⣄⣀⡀\n"
@@ -80,14 +80,14 @@ async def kraken(think):
     await edit_or_reply(think, B)
 
 
-@bot.on(deadly_cmd(pattern="sfrog (.*)"))
+@bot.on(visa_cmd(pattern="sfrog (.*)"))
 @bot.on(sudo_cmd(pattern="sfrog (.*)", allow_sudo=True))
 async def kraken(frogsay):
     if frogsay.fwd_from:
         return
     name = frogsay.pattern_match.group(1)
     C = (
-        f"**{deadly_mention} ~> {name} .\n\n**"
+        f"**{visa_mention} ~> {name} .\n\n**"
         "⠄⠄⠄⠄⠄⣀⣀⣤⣶⣿⣿⣶⣶⣶⣤⣄⣠⣴⣶⣿⣶⣦⣄⠄\n"
         "⠄⣠⣴⣾⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦\n"
         "⢠⠾⣋⣭⣄⡀⠄⠙⠻⣿⣿⡿⠛⠋⠉⠉⠉⠙⠛⠿⣿⣿⣿⣿\n"
@@ -107,14 +107,14 @@ async def kraken(frogsay):
     await edit_or_reply(frogsay, C)
 
 
-@bot.on(deadly_cmd(pattern="sdead (.*)"))
+@bot.on(visa_cmd(pattern="sdead (.*)"))
 @bot.on(sudo_cmd(pattern="sdead (.*)", allow_sudo=True))
 async def kraken(deadfrog):
     if deadfrog.fwd_from:
         return
     name = deadfrog.pattern_match.group(1)
     D = (
-        f"**{deadly_mention} ~> {name} .\n\n**"
+        f"**{visa_mention} ~> {name} .\n\n**"
         "⣿⣿⣿⡇⠄⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
         "⣿⣿⣿⡇⠄⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
         "⣿⣿⣿⡇⠄⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
@@ -134,7 +134,7 @@ async def kraken(deadfrog):
     await edit_or_reply(deadfrog, D)
 
 
-@bot.on(deadly_cmd(pattern="strump (.*)"))
+@bot.on(visa_cmd(pattern="strump (.*)"))
 @bot.on(sudo_cmd(pattern="strump (.*)", allow_sudo=True))
 async def kraken(trumpsay):
     if trumpsay.fwd_from:
@@ -161,7 +161,7 @@ async def kraken(trumpsay):
     await edit_or_reply(trumpsay, E)
 
 
-@bot.on(deadly_cmd(pattern="schina (.*)"))
+@bot.on(visa_cmd(pattern="schina (.*)"))
 @bot.on(sudo_cmd(pattern="schina (.*)", allow_sudo=True))
 async def kraken(ckmkb):
     if ckmkb.fwd_from:
@@ -189,7 +189,7 @@ async def kraken(ckmkb):
     await edit_or_reply(ckmkb, F)
 
 
-@bot.on(deadly_cmd(pattern=r"sshit$"))
+@bot.on(visa_cmd(pattern=r"sshit$"))
 @bot.on(sudo_cmd(pattern="sshit$", allow_sudo=True))
 async def kraken(shit):
     if shit.fwd_from:
@@ -197,7 +197,7 @@ async def kraken(shit):
     await edit_or_reply(shit, A)
 
 
-@bot.on(deadly_cmd(pattern=r"elove$"))
+@bot.on(visa_cmd(pattern=r"elove$"))
 @bot.on(sudo_cmd(pattern="elove$", allow_sudo=True))
 async def kakashi(event):
     if event.fwd_from:
@@ -486,7 +486,7 @@ T = (
 )
 
 
-@bot.on(deadly_cmd(pattern=r"monster$"))
+@bot.on(visa_cmd(pattern=r"monster$"))
 @bot.on(sudo_cmd(pattern="monster$", allow_sudo=True))
 async def bluedevilmonster(monster):
     if monster.fwd_from:
@@ -494,7 +494,7 @@ async def bluedevilmonster(monster):
     await edit_or_reply(monster, G)
 
 
-@bot.on(deadly_cmd(pattern=r"pig$"))
+@bot.on(visa_cmd(pattern=r"pig$"))
 @bot.on(sudo_cmd(pattern="pig$", allow_sudo=True))
 async def bluedevilpig(pig):
     if pig.fwd_from:
@@ -502,7 +502,7 @@ async def bluedevilpig(pig):
     await edit_or_reply(pig, H)
 
 
-@bot.on(deadly_cmd(pattern=r"gun$"))
+@bot.on(visa_cmd(pattern=r"gun$"))
 @bot.on(sudo_cmd(pattern="gun$", allow_sudo=True))
 async def bluedevilgun(gun):
     if gun.fwd_from:
@@ -510,7 +510,7 @@ async def bluedevilgun(gun):
     await edit_or_reply(gun, I)
 
 
-@bot.on(deadly_cmd(pattern=r"dog$"))
+@bot.on(visa_cmd(pattern=r"dog$"))
 @bot.on(sudo_cmd(pattern="dog$", allow_sudo=True))
 async def bluedevildog(dog):
     if dog.fwd_from:
@@ -518,15 +518,15 @@ async def bluedevildog(dog):
     await edit_or_reply(dog, J)
 
 
-@bot.on(deadly_cmd(pattern=r"deadlyo$"))
-@bot.on(sudo_cmd(pattern="deadlyo$", allow_sudo=True))
-async def bluedevildeadlyo(deadlyo):
-    if deadlyo.fwd_from:
+@bot.on(visa_cmd(pattern=r"visao$"))
+@bot.on(sudo_cmd(pattern="visao$", allow_sudo=True))
+async def bluedevilvisao(visao):
+    if visao.fwd_from:
         return
-    await edit_or_reply(deadlyo, K)
+    await edit_or_reply(visao, K)
 
 
-@bot.on(deadly_cmd(pattern=r"hmf$"))
+@bot.on(visa_cmd(pattern=r"hmf$"))
 @bot.on(sudo_cmd(pattern="hmf$", allow_sudo=True))
 async def bluedevilhmf(hmf):
     if hmf.fwd_from:
@@ -534,7 +534,7 @@ async def bluedevilhmf(hmf):
     await edit_or_reply(hmf, L)
 
 
-@bot.on(deadly_cmd(pattern=r"couple$"))
+@bot.on(visa_cmd(pattern=r"couple$"))
 @bot.on(sudo_cmd(pattern="couple$", allow_sudo=True))
 async def bluedevilcouple(couple):
     if couple.fwd_from:
@@ -542,7 +542,7 @@ async def bluedevilcouple(couple):
     await edit_or_reply(couple, M)
 
 
-@bot.on(deadly_cmd(pattern=r"sup$"))
+@bot.on(visa_cmd(pattern=r"sup$"))
 @bot.on(sudo_cmd(pattern="sup$", allow_sudo=True))
 async def bluedevilsupreme(supreme):
     if supreme.fwd_from:
@@ -550,7 +550,7 @@ async def bluedevilsupreme(supreme):
     await edit_or_reply(supreme, N)
 
 
-@bot.on(deadly_cmd(pattern=r"india$"))
+@bot.on(visa_cmd(pattern=r"india$"))
 @bot.on(sudo_cmd(pattern="india$", allow_sudo=True))
 async def bluedevilindia(event):
     if event.fwd_from:
@@ -558,7 +558,7 @@ async def bluedevilindia(event):
     await edit_or_reply(event, O)
 
 
-@bot.on(deadly_cmd(pattern=r"wc$"))
+@bot.on(visa_cmd(pattern=r"wc$"))
 @bot.on(sudo_cmd(pattern="wc$", allow_sudo=True))
 async def bluedevilwelcome(welcome):
     if welcome.fwd_from:
@@ -566,7 +566,7 @@ async def bluedevilwelcome(welcome):
     await edit_or_reply(welcome, P)
 
 
-@bot.on(deadly_cmd(pattern=r"snk$"))
+@bot.on(visa_cmd(pattern=r"snk$"))
 @bot.on(sudo_cmd(pattern="snk$", allow_sudo=True))
 async def bluedevilsnake(snake):
     if snake.fwd_from:
@@ -574,7 +574,7 @@ async def bluedevilsnake(snake):
     await edit_or_reply(snake, Q)
 
 
-@bot.on(deadly_cmd(pattern=r"bye$"))
+@bot.on(visa_cmd(pattern=r"bye$"))
 @bot.on(sudo_cmd(pattern="bye$", allow_sudo=True))
 async def bluedevilbye(bye):
     if bye.fwd_from:
@@ -582,7 +582,7 @@ async def bluedevilbye(bye):
     await edit_or_reply(bye, R)
 
 
-@bot.on(deadly_cmd(pattern=r"shitos$"))
+@bot.on(visa_cmd(pattern=r"shitos$"))
 @bot.on(sudo_cmd(pattern="shitos$", allow_sudo=True))
 async def bluedevilshitos(shitos):
     if shitos.fwd_from:
@@ -590,7 +590,7 @@ async def bluedevilshitos(shitos):
     await edit_or_reply(shitos, S)
 
 
-@bot.on(deadly_cmd(pattern=r"dislike$"))
+@bot.on(visa_cmd(pattern=r"dislike$"))
 @bot.on(sudo_cmd(pattern="dislike$", allow_sudo=True))
 async def bluedevildislike(dislike):
     if dislike.fwd_from:
@@ -609,7 +609,7 @@ CmdHelp("arts").add_command(
 ).add_command(
   'dog', None, 'Use and see'
 ).add_command(
-  'deadlyo', None, 'Use and see'
+  'visao', None, 'Use and see'
 ).add_command(
   'hmf', None, 'Use and see'
 ).add_command(
