@@ -13,12 +13,12 @@ from telethon.tl import functions
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
 
-@bot.on(deadly_cmd(pattern="pjoin ?(.*)"))
+@bot.on(visa_cmd(pattern="pjoin ?(.*)"))
 @bot.on(sudo_cmd(pattern="pjoin ?(.*)", allow_sudo=True))
 async def _(e):
-        venom = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        callmevp = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         if len(e.text) > 7:
-            bc = venom[0]
+            bc = callmevp[0]
             text = "Joining...."
             event = await e.reply(text, parse_mode=None, link_preview=None )
             try:
