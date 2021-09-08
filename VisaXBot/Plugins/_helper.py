@@ -7,26 +7,26 @@ from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
 from . import *
 
 msg = f"""
-**⚡ ℓєgєη∂яу αƒ ∂єα∂ℓу кααℓ ⚡ **
+**⚡ ℓєgєη∂αяу αƒ νιѕα-χ вσт ⚡ **
   •        [📑 Repo 📑](https://github.com/DEADLY-FIGHTERS/DEADLY-KAAL-BOT)
   •        [🚀 Deploy 🚀](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FDEADLY-FIGHTERS%2Fdeadly-KAAL-BOT&template=https%3A%2F%2Fgithub.com%2FDEADLYy-FIGHTERS%2Fdeadly-KAAL-bot)
   •  ©️ {deadly_channel} ™
 """
 botname = Config.BOT_USERNAME
 
-@bot.on(deadly_cmd(pattern="repo$"))
+@bot.on(visa_cmd(pattern="repo$"))
 @bot.on(sudo_cmd(pattern="repo$", allow_sudo=True))
 async def repo(event):
     try:
-        deadly = await bot.inline_query(botname, "repo")
-        await deadly[0].click(event.chat_id)
-        if event.sender_id == official_sameer:
+        visa = await bot.inline_query(botname, "repo")
+        await visa[0].click(event.chat_id)
+        if event.sender_id == CALL_ME_VP:
             await event.delete()
     except (noin, dedbot):
         await eor(event, msg)
 
 
-@bot.on(deadly_cmd(pattern="help ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="help ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="help ?(.*)", allow_sudo=True))
 async def yardim(event):
     if event.fwd_from:
@@ -49,7 +49,7 @@ async def yardim(event):
         await eor(event, "**⚠️ ERROR !!** \nPlease Re-Check BOT_TOKEN & BOT_USERNAME on Heroku.")
 
 
-@bot.on(deadly_cmd(pattern="plinfo(?: |$)(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="plinfo(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="plinfo(?: |$)(.*)", allow_sudo=True))
 async def VisaXBot(event):
     if event.fwd_from:
