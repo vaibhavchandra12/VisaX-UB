@@ -2,12 +2,12 @@ from telethon.tl.functions.messages import SaveDraftRequest
 
 from . import *
 
-@bot.on(deadly_cmd(pattern="chain$"))
+@bot.on(visa_cmd(pattern="chain$"))
 @bot.on(sudo_cmd(pattern="chain$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    deadly = await eor(event, "Counting...")
+    visa = await eor(event, "Counting...")
     count = -1
     message = event.message
     while message:
@@ -20,7 +20,7 @@ async def _(event):
             )
         message = reply
         count += 1
-    await deadly.edit(f"⛓️ **Chain length :**  `{count}`")
+    await visa.edit(f"⛓️ **Chain length :**  `{count}`")
 
 
 CmdHelp("chain").add_command(
