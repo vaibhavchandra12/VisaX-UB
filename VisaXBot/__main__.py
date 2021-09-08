@@ -21,7 +21,7 @@ async def visa_bot(bot_token):
         bot.me = await bot.get_me()
         bot.uid = telethon.utils.get_peer_id(bot.me)
     except Exception as e:
-        LOGS.error(f"VISA_X_SESSION - {str(e)}")
+        LOGS.error(f"VISAX_SESSION - {str(e)}")
         sys.exit()
 
 
@@ -39,7 +39,7 @@ else:
             LOGS.info("Checking Completed. Proceeding to next step...")
             LOGS.info("🔰 VISA-X BOT KO START KR RHE HAI BOSS 🔰")
             bot.loop.run_until_complete(visa_bot(Config.BOT_USERNAME))
-            LOGS.info("🔥 VISA-X BOT STARTUP COMPLETE 🔥 AB BASS PLUGINS DAALNA HE WAIT KRO 😂😂🔥")
+            LOGS.info("🔥 VISA-X BOT STARTUP COMPLETE 🔥")
         else:
             bot.start()
     except Exception as e:
@@ -77,7 +77,7 @@ LOGS.info("Starting Bot Mode !")
 tbot.start()
 LOGS.info("⚡ YOUR BOT IS NOW READY BABE ⚡")
 LOGS.info(
-    "CONGRATULATIONS 🥳🥳🎊🎊 YOUR 𝘃ɪ𝒔ѧ-𝙭 ʙο𝞽 IS DEPLOYED 🎊 ... NOW TYPE .ping OR .alive TO CHECK OUR AMAZING BOT 🥳🔥 IF U HAVE ANY PROBLEM THEN JOIN @Visa_Update"
+    "CONGRATULATIONS 🥳🥳🎊🎊 YOUR 𝘃ɪ𝒔ѧ-X ʙο𝞽 IS DEPLOYED 🎊 ... NOW TYPE .ping OR .alive TO CHECK OUR AMAZING BOT 🥳🔥 IF U HAVE ANY PROBLEM THEN JOIN @Visa_Update"
 )
 
 # that's life...
