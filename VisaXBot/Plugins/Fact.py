@@ -17,7 +17,7 @@ from . import *
 
 
 
-@borg.on(deadly_cmd(pattern=r"fact", outgoing=True))
+@borg.on(visa_cmd(pattern=r"fact", outgoing=True))
 
 async def _(event):
 
