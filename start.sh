@@ -2,8 +2,8 @@
 
 
 echo """
-DEADLY BOT OP
+VisaX BOT OP
                                 
 """
 
-python3 -m DeadlyBot
+python3 -m VisaXBot
