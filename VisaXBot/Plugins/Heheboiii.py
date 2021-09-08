@@ -3,7 +3,7 @@
 
 from . import *
 
-@bot.on(deadly_cmd(pattern="uraid (.*)"))
+@bot.on(visa_cmd(pattern="uraid (.*)"))
 async def spam(e):
         if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
             return await e.reply(parse_mode=None, link_preview=None )
