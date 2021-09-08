@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 from . import *
 
-@bot.on(deadly_cmd(pattern="fext (.*)"))
+@bot.on(visa_cmd(pattern="fext (.*)"))
 @bot.on(sudo_cmd(pattern="fext (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
