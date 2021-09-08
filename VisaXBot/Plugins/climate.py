@@ -29,7 +29,7 @@ async def get_tz(con):
         return
 
 
-@bot.on(deadly_cmd(pattern="climate ?(.*)"))
+@bot.on(visa_cmd(pattern="climate ?(.*)"))
 @bot.on(sudo_cmd(pattern="climate ?(.*)", allow_sudo=True))
 async def get_weather(weather):
     if not OWM_API:
@@ -126,11 +126,11 @@ async def get_weather(weather):
         + f"**{desc}**\n"
         + f"`{cityname}, {fullc_n}`\n"
         + f"`{time}`\n\n"
-        + f"**By :**  {deadly_mention}",
+        + f"**By :**  {vsai_mention}",
     )
 
 
-@bot.on(deadly_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
+@bot.on(visa_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="setcity(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def set_default_city(city):
@@ -180,7 +180,7 @@ async def set_default_city(city):
     await edit_or_reply(city, f"`Set default city as {cityname}, {fullc_n}.`")
 
 
-@bot.on(deadly_cmd(pattern="wttr ?(.*)"))
+@bot.on(visa_cmd(pattern="wttr ?(.*)"))
 @bot.on(sudo_cmd(pattern="wttr ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
