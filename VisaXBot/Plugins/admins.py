@@ -50,7 +50,7 @@ MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
-@bot.on(deadly_cmd(pattern="setgpic$"))
+@bot.on(visa_cmd(pattern="setgpic$"))
 @bot.on(sudo_cmd(pattern="setgpic$", allow_sudo=True))
 @errors_handler
 async def set_group_photo(gpic):
@@ -97,7 +97,7 @@ async def set_group_photo(gpic):
             )
 
 
-@bot.on(deadly_cmd(pattern="promote(?: |$)(.*)"))
+@bot.on(visa_cmd(pattern="promote(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="promote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def promote(promt):
@@ -118,7 +118,7 @@ async def promote(promt):
         pin_messages=True,
         manage_call=True,
     )
-    deadlyevent = await eor(promt, "`Promoting User...`")
+    visaevent = await eor(promt, "`Promoting User...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
         rank = "ǟɖʍɨռ"
@@ -126,9 +126,9 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await deadlyevent.edit(f"**🔥 Kʀ Dɪʏᴀ Pʀᴏᴍᴏᴛᴇ Cʜʟ ᴀʙ Eᴋ Kᴀᴀᴍ ᴋʀ Cʜᴀᴋɴᴀ Mᴇɪɴ Lᴀᴀᴛᴀ Hᴜ ᴛᴜ DAᴀʀᴜ LAᴀ PAᴡʀʀʏʏ ᴋʀᴇɢᴇ Aᴘᴀɴ")
+        await visaevent.edit(f"**🔥 Kʀ Dɪʏᴀ Pʀᴏᴍᴏᴛᴇ Cʜʟ ᴀʙ Eᴋ Kᴀᴀᴍ ᴋʀ Cʜᴀᴋɴᴀ Mᴇɪɴ Lᴀᴀᴛᴀ Hᴜ ᴛᴜ DAᴀʀᴜ LAᴀ PAᴡʀʀʏʏ ᴋʀᴇɢᴇ Aᴘᴀɴ")
     except BadRequestError:
-        await deadlyevent.edit(NO_PERM)
+        await visaevent.edit(NO_PERM)
         return
     await promt.client.send_message(
         lg_id,
@@ -138,7 +138,7 @@ async def promote(promt):
     )
 
 
-@bot.on(deadly_cmd(pattern="promote1(?: |$)(.*)"))
+@bot.on(visa_cmd(pattern="promote1(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="promote1(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def promote(promt):
@@ -159,7 +159,7 @@ async def promote(promt):
         pin_messages=True,
         manage_call=True,
     )
-    deadlyevent = await eor(promt, "`Promoting User...`")
+    visaevent = await eor(promt, "`Promoting User...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
         rank = "ǟɖʍɨռ"
@@ -167,9 +167,9 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await deadlyevent.edit(f"**🔥 Kʀ Dɪʏᴀ Pʀᴏᴍᴏᴛᴇ Cʜʟ ᴀʙ Eᴋ Kᴀᴀᴍ ᴋʀ Cʜᴀᴋɴᴀ Mᴇɪɴ Lᴀᴀᴛᴀ Hᴜ ᴛᴜ DAᴀʀᴜ LAᴀ PAᴡʀʀʏʏ ᴋʀᴇɢᴇ Aᴘᴀɴ")
+        await visaevent.edit(f"**🔥 Kʀ Dɪʏᴀ Pʀᴏᴍᴏᴛᴇ Cʜʟ ᴀʙ Eᴋ Kᴀᴀᴍ ᴋʀ Cʜᴀᴋɴᴀ Mᴇɪɴ Lᴀᴀᴛᴀ Hᴜ ᴛᴜ DAᴀʀᴜ LAᴀ PAᴡʀʀʏʏ ᴋʀᴇɢᴇ Aᴘᴀɴ")
     except BadRequestError:
-        await deadlyevent.edit(NO_PERM)
+        await visaevent.edit(NO_PERM)
         return
     await promt.client.send_message(
         lg_id,
@@ -179,7 +179,7 @@ async def promote(promt):
     )
 
 
-@bot.on(deadly_cmd(pattern="promote2(?: |$)(.*)"))
+@bot.on(visa_cmd(pattern="promote2(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="promote2(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def promote(promt):
@@ -200,7 +200,7 @@ async def promote(promt):
         pin_messages=True,
         manage_call=True,
     )
-    deadlyevent = await eor(promt, "`Promoting User...`")
+    visaevent = await eor(promt, "`Promoting User...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
         rank = "ǟɖʍɨռ"
@@ -208,9 +208,9 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await deadlyevent.edit(f"**🔥 Kʀ Dɪʏᴀ Pʀᴏᴍᴏᴛᴇ Cʜʟ ᴀʙ Eᴋ Kᴀᴀᴍ ᴋʀ Cʜᴀᴋɴᴀ Mᴇɪɴ Lᴀᴀᴛᴀ Hᴜ ᴛᴜ DAᴀʀᴜ LAᴀ PAᴡʀʀʏʏ ᴋʀᴇɢᴇ Aᴘᴀɴ")
+        await visaevent.edit(f"**🔥 Kʀ Dɪʏᴀ Pʀᴏᴍᴏᴛᴇ Cʜʟ ᴀʙ Eᴋ Kᴀᴀᴍ ᴋʀ Cʜᴀᴋɴᴀ Mᴇɪɴ Lᴀᴀᴛᴀ Hᴜ ᴛᴜ DAᴀʀᴜ LAᴀ PAᴡʀʀʏʏ ᴋʀᴇɢᴇ Aᴘᴀɴ")
     except BadRequestError:
-        await deadlyevent.edit(NO_PERM)
+        await visaevent.edit(NO_PERM)
         return
     await promt.client.send_message(
         lg_id,
@@ -220,7 +220,7 @@ async def promote(promt):
     )
 
 
-@bot.on(deadly_cmd(pattern="promote3(?: |$)(.*)"))
+@bot.on(visa_cmd(pattern="promote3(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="promote3(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def promote(promt):
@@ -241,7 +241,7 @@ async def promote(promt):
         pin_messages=True,
         manage_call=True,
     )
-    deadlyevent = await eor(promt, "`Promoting User...`")
+    visaevent = await eor(promt, "`Promoting User...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
         rank = "ǟɖʍɨռ"
@@ -249,9 +249,9 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await deadlyevent.edit(f"**🔥 Kʀ Dɪʏᴀ Pʀᴏᴍᴏᴛᴇ Cʜʟ ᴀʙ Eᴋ Kᴀᴀᴍ ᴋʀ Cʜᴀᴋɴᴀ Mᴇɪɴ Lᴀᴀᴛᴀ Hᴜ ᴛᴜ DAᴀʀᴜ LAᴀ PAᴡʀʀʏʏ ᴋʀᴇɢᴇ Aᴘᴀɴ")
+        await visaevent.edit(f"**🔥 Kʀ Dɪʏᴀ Pʀᴏᴍᴏᴛᴇ Cʜʟ ᴀʙ Eᴋ Kᴀᴀᴍ ᴋʀ Cʜᴀᴋɴᴀ Mᴇɪɴ Lᴀᴀᴛᴀ Hᴜ ᴛᴜ DAᴀʀᴜ LAᴀ PAᴡʀʀʏʏ ᴋʀᴇɢᴇ Aᴘᴀɴ")
     except BadRequestError:
-        await deadlyevent.edit(NO_PERM)
+        await visaevent.edit(NO_PERM)
         return
     await promt.client.send_message(
         lg_id,
@@ -261,7 +261,7 @@ async def promote(promt):
     )
 
 
-@bot.on(deadly_cmd(pattern="demote(?: |$)(.*)"))
+@bot.on(visa_cmd(pattern="demote(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="demote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def demote(dmod):
@@ -273,7 +273,7 @@ async def demote(dmod):
     if not admin and not creator:
         await eor(dmod, NO_ADMIN)
         return
-    deadlyevent = await eor(dmod, "`Demoting User...`")
+    visaevent = await eor(dmod, "`Demoting User...`")
     rank = "ǟɖʍɨռ"
     user = await get_user_from_event(dmod)
     user = user[0]
@@ -290,9 +290,9 @@ async def demote(dmod):
     try:
         await dmod.client(EditAdminRequest(dmod.chat_id, user.id, newrights, rank))
     except BadRequestError:
-        await deadlyevent.edit(NO_PERM)
+        await visaevent.edit(NO_PERM)
         return
-    await deadlyevent.edit(f"**😪 Bʜᴀɪ/Bᴇʜᴇɴ ᴛᴇʀɪ Aᴜᴋᴀᴀᴛ Nᴀ Hᴀɪ Iᴅʜʀ Aᴅᴍɪɴ BAɴɴᴇ Kɪ`")
+    await visaevent.edit(f"**😪 Bʜᴀɪ/Bᴇʜᴇɴ ᴛᴇʀɪ Aᴜᴋᴀᴀᴛ Nᴀ Hᴀɪ Iᴅʜʀ Aᴅᴍɪɴ BAɴɴᴇ Kɪ`")
     await dmod.client.send_message(
         lg_id,
         "#DEMOTE\n"
@@ -309,32 +309,32 @@ async def watcher(event):
             LOGS.info(str(e))
 
 
-@bot.on(deadly_cmd(pattern=r"mute ?(.*)"))
+@bot.on(visa_cmd(pattern=r"mute ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"mute ?(.*)", allow_sudo=True))
-async def muth(deadly):
-    if deadly.is_private:
-        await eor(deadly, "**Enough of your bullshit  !!**")
+async def muth(visa):
+    if visa.is_private:
+        await eor(visa, "**Enough of your bullshit  !!**")
         await sleep(2)
-        await deadly.get_reply_message()
-        replied_user = await deadly.client(GetFullUserRequest(deadly.chat_id))
-        if is_muted(deadly.chat_id, deadly.chat_id):
-            return await deadly.edit(
+        await visa.get_reply_message()
+        replied_user = await visa.client(GetFullUserRequest(visa.chat_id))
+        if is_muted(visa.chat_id, visa.chat_id):
+            return await visa.edit(
                 "Nigga is already muted here 🥴"
             )
-        if deadly.chat_id == official_sameer:
-            return await eod(deadly, "Nashe me hai kya lawde 🥴")
+        if visa.chat_id == official_sameer:
+            return await eod(visa, "Nashe me hai kya lawde 🥴")
         try:
-            mute(deadly.chat_id, deadly.chat_id)
+            mute(visa.chat_id, visa.chat_id)
         except Exception as e:
-            await eor(deadly, f"**Error **\n`{str(e)}`")
+            await eor(visa, f"**Error **\n`{str(e)}`")
         else:
-            await eor(deadly, "**Chup Reh Lawde 🥴\n`**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
+            await eor(visa, "**Chup Reh Lawde 🥴\n`**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
     else:
-        deadlyevent = await eor(deadly, "`Muting...`")
-        input_str = deadly.pattern_match.group(1)
-        chat = await deadly.get_chat()
-        if deadly.reply_to_msg_id:
-            userid = (await deadly.get_reply_message()).sender_id
+        deadlyevent = await eor(visa, "`Muting...`")
+        input_str = visa.pattern_match.group(1)
+        chat = await visa.get_chat()
+        if visa.reply_to_msg_id:
+            userid = (await visa.get_reply_message()).sender_id
             name = (await deadly.client.get_entity(userid)).first_name
         elif input_str:
             if input_str.isdigit():
