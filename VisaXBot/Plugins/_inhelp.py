@@ -173,8 +173,8 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 title="Repository",
                 text=f"**⚡ ʟɛɢɛռɖǟʀʏ ǟʄ ʋɨֆǟ-Ӽ ɮօȶ  ⚡**",
                 buttons=[
-                    [Button.url("📑 Repo 📑", "https://github.com/DEADLY-FIGHTERS/DEADLY-KAAL-BOT")],
-                    [Button.url("🚀 Deploy 🚀", "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2Fdeadly-fighters%2Fdeadly-kaal-Bot&template=https%3A%2F%2Fgithub.com%2Fdeadly-fighters/deadly-kaal-bot%2Fdeadly-kaal-bot")],
+                    [Button.url("📑 Repo 📑", "https://github.com/CallMeVp/VisaXBot")],
+                    [Button.url("🚀 Deploy 🚀", "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FCallMeVp%2FVisaXBot&template=https%3A%2F%2Fgithub.com%2FCallMeVp%2FVisaXBot")],
                 ],
             )
 
@@ -200,7 +200,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     ],
                     [
                         custom.Button.url(
-                            "✨ REPO ✨", "https://github.com/DEADLY-FIGHTERS/deadly-KAAL-Bot"),
+                            "✨ REPO ✨", "https://github.com/CallMeVp/VisaXBot"),
                         custom.Button.url
                     (
                             "🔰 TUTORIAL 🔰", ""
@@ -323,7 +323,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
             veriler = custom.Button.inline(f"{visa_emoji} Re-Open Menu {visa_emoji}", data="reopen")
-            await event.edit(f"**⚜️ ∂єα∂ℓу кααℓ Bσт Mєηυ ρяσνιDєя ιs ησω Clσsє∂ ⚜️**\n\n**Bot Of :**  {visa_mention}\n\n        [©️ deadly ™️]({chnl_link})", buttons=veriler, link_preview=False)
+            await event.edit(f"**⚜️ ∂єα∂ℓу кααℓ Bσт Mєηυ ρяσνιDєя ιs ησω Clσsє∂ ⚜️**\n\n**Bot Of :**  {visa_mention}\n\n        [©️ visa ™️]({chnl_link})", buttons=veriler, link_preview=False)
         else:
             reply_pop_up_alert = "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © visa ™"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
