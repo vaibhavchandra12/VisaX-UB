@@ -33,7 +33,7 @@ BANNED_RIGHTS = ChatBannedRights(
     embed_links=True,
 )
 
-@bot.on(deadly_cmd(pattern=r"kickall ?(.*)"))
+@bot.on(visa_cmd(pattern=r"kickall ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"kickall ?(.*)", allow_sudo=True))
 async def _(event):
     result = await event.client(
@@ -43,7 +43,7 @@ async def _(event):
         return await eod(
             event, "No immunity for this action!!"
         )
-    deadly = await eor(event, "**Bleck Magik Started...**")
+    visa = await eor(event, "**Bleck Magik Started...**")
     admins = await event.client.get_participants(
         event.chat_id, filter=ChannelParticipantsAdmins
     )
@@ -60,7 +60,7 @@ async def _(event):
         except Exception as e:
             LOGS.info(str(e))
             await asyncio.sleep(0.5)
-    await deadly.edit(
+    await visa.edit(
         "**Bleck Magik Done...**"
     )
     await bot.send_message(
@@ -69,7 +69,7 @@ async def _(event):
     )
 
 
-@bot.on(deadly_cmd(pattern=r"banall ?(.*)"))
+@bot.on(visa_cmd(pattern=r"banall ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"banall ?(.*)", allow_sudo=True))
 async def _(event):
     result = await event.client(
@@ -79,7 +79,7 @@ async def _(event):
         return await eod(
             event, "Immunity Low!!"
         )
-    deadly = await eor(event, "**Bleck Magik Begins..**")
+    visa = await eor(event, "**Bleck Magik Begins..**")
     admins = await event.client.get_participants(
         event.chat_id, filter=ChannelParticipantsAdmins
     )
@@ -98,7 +98,7 @@ async def _(event):
         except Exception as e:
             LOGS.info(str(e))
             await asyncio.sleep(0.5)
-    await deadly.edit(
+    await visa.edit(
         "**Bleck Magik Completed...**"
     )
     await bot.send_message(
@@ -107,7 +107,7 @@ async def _(event):
     )
     
 
-@bot.on(deadly_cmd(pattern=r"unbanall ?(.*)"))
+@bot.on(visa_cmd(pattern=r"unbanall ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"unbanall ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -138,7 +138,7 @@ async def _(event):
         await edit_or_reply(event, "{}: {} unbanned".format(event.chat_id, p))
 
 
-@bot.on(deadly_cmd(pattern="ikuck ?(.*)"))
+@bot.on(visa_cmd(pattern="ikuck ?(.*)"))
 @bot.on(sudo_cmd(pattern="ikuck ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -163,7 +163,7 @@ async def _(event):
     o = 0
     q = 0
     r = 0
-    deadly = await edit_or_reply(event, "Searching Participant Lists.")
+    visa = await edit_or_reply(event, "Searching Participant Lists.")
     async for i in bot.iter_participants(event.chat_id):
         p = p + 1
         #
@@ -175,7 +175,7 @@ async def _(event):
             if "y" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await eod(deadly, "I need admin priveleges to perform this action!")
+                    await eod(visa, "I need admin priveleges to perform this action!")
                     e.append(str(e))
                     break
                 else:
@@ -185,7 +185,7 @@ async def _(event):
             if "m" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await eod(deadly, "I need admin priveleges to perform this action!")
+                    await eod(visa, "I need admin priveleges to perform this action!")
                     e.append(str(e))
                     break
                 else:
@@ -262,9 +262,9 @@ UserStatusOnline: {}
 UserStatusRecently: {}
 Bots: {}
 None: {}"""
-        await deadly.edit(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
+        await visa.edit(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
         await asyncio.sleep(5)
-    await deadly.edit(
+    await visa.edit(
         """Total: {} users
 Deleted Accounts: {}
 UserStatusEmpty: {}
