@@ -3,7 +3,7 @@ from PyDictionary import PyDictionary
 
 from . import *
 
-@bot.on(deadly_cmd(pattern="ud (.*)"))
+@bot.on(visa_cmd(pattern="ud (.*)"))
 @bot.on(sudo_cmd(pattern="ud (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -29,10 +29,10 @@ async def _(event):
         return
     word = event.pattern_match.group(1)
     dictionary = PyDictionary()
-    deadly = dictionary.meaning(word)
+    visa = dictionary.meaning(word)
     output = f"**Word :** __{word}__\n\n"
     try:
-        for a, b in deadly.items():
+        for a, b in visa.items():
             output += f"**{a}**\n"
             for i in b:
                 output += f"☞__{i}__\n"
