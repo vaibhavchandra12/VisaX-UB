@@ -3,26 +3,26 @@
 from . import *
 
 
-@bot.on(deadly_cmd(pattern="song ?(.*)"))
+@bot.on(visa_cmd(pattern="song ?(.*)"))
 @bot.on(sudo_cmd(pattern="song ?(.*)", allow_sudo=True))
 async def _(event):
-    deadly_ = event.text[4:]
-    if deadly_ == "":
+    visa_ = event.text[4:]
+    if visa_ == "":
         return await eor(event, "Give a song name to search")
-    deadly = await eor(event, f"Searching song `{deadly_}`")
-    somg = await event.client.inline_query("Lybot", f"{(deEmojify(deadly_))}")
+    visa = await eor(event, f"Searching song `{visa_}`")
+    somg = await event.client.inline_query("Lybot", f"{(deEmojify(visa_))}")
     if somg:
         fak = await somg[0].click(Config.LOGGER_ID)
         if fak:
             await bot.send_file(
                 event.chat_id,
                 file=fak,
-                caption=f"**Song by :** {deadly_mention}",
+                caption=f"**Song by :** {visa_mention}",
             )
-        await deadly.delete()
+        await visa.delete()
         await fak.delete()
     else:
-        await deadly.edit("**ERROR 404 :** __NOT FOUND__")
+        await visa.edit("**ERROR 404 :** __NOT FOUND__")
 
 
 CmdHelp("somgs").add_command(
