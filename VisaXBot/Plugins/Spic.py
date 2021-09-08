@@ -2,14 +2,14 @@
 
 from . import *
 
-@bot.on(deadly_cmd(pattern="spic"))
+@bot.on(visa_cmd(pattern="spic"))
 async def oho(event):
   if not event.is_reply:
     return await event.edit('Reply to a self distructing pic !.!.!')
   k = await event.get_reply_message()
   pic = await k.download_media()
   await bot.send_file(event.chat_id, pic, caption=f"""
-  Oʜᴏ! Lᴏʟ 😂, Dᴇsᴛʀᴜᴄᴛɪᴏɴ Mᴏᴅᴇ Pɪᴄ Dᴇsᴛʀᴏʏᴇᴅ!\n\nPɪᴄ Dᴇsᴛʀᴏʏᴇᴅ Bʏ\n\n[✰ ᒪᗴᘜᗴᑎᗪᖇY ᗪᗴᗩᗪᒪY ᗷOT ✰](t.me/deadly_kaal_bot) 
+  Oʜᴏ! Lᴏʟ 😂, Dᴇsᴛʀᴜᴄᴛɪᴏɴ Mᴏᴅᴇ Pɪᴄ Dᴇsᴛʀᴏʏᴇᴅ!\n\nPɪᴄ Dᴇsᴛʀᴏʏᴇᴅ Bʏ\n\n[✰ ւᴇɢᴇɴᴅѧʀ𝞬 𝘃ɪ𝒔ѧ-𝙭 ʙο𝞽 ✰](t.me/Visa_Update) 
   """)                                                            
   await event.delete()
   
