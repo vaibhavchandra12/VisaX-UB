@@ -13,7 +13,7 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
     os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
 
 
-@bot.on(deadly_cmd(pattern="pips(?: |$)(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="pips(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="pips(?: |$)(.*)", allow_sudo=True))
 async def pipcheck(pip):
     pipmodule = pip.pattern_match.group(1)
@@ -61,7 +61,7 @@ async def pipcheck(pip):
         await pip.edit(f"`Use {hl}plinfo execmod to see an example`")
 
 
-@bot.on(deadly_cmd(pattern="suicide$"))
+@bot.on(visa_cmd(pattern="suicide$"))
 @bot.on(sudo_cmd(pattern="suicide$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -76,7 +76,7 @@ async def _(event):
     if event.reply_to_msg_id:
         event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sdeadly(
+    process = await asyncio.create_subprocess_svisa(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
@@ -98,7 +98,7 @@ async def _(event):
         await event.edit(OUTPUT)
 
 
-@bot.on(deadly_cmd(pattern="date$"))
+@bot.on(visa_cmd(pattern="date$"))
 @bot.on(sudo_cmd(pattern="date$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -113,7 +113,7 @@ async def _(event):
     if event.reply_to_msg_id:
         event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sdeadly(
+    process = await asyncio.create_subprocess_svisa(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
@@ -135,7 +135,7 @@ async def _(event):
         await event.edit(OUTPUT)
 
 
-@bot.on(deadly_cmd(pattern="env$"))
+@bot.on(visa_cmd(pattern="env$"))
 @bot.on(sudo_cmd(pattern="env$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -150,7 +150,7 @@ async def _(event):
     if event.reply_to_msg_id:
         event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sdeadly(
+    process = await asyncio.create_subprocess_svisa(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
@@ -175,7 +175,7 @@ async def _(event):
         
 
 
-@bot.on(deadly_cmd(pattern="speed$"))
+@bot.on(visa_cmd(pattern="speed$"))
 @bot.on(sudo_cmd(pattern="speed$", allow_sudo=True))
 async def _(event):
     await event.edit("calculating...")
@@ -191,7 +191,7 @@ async def _(event):
     if event.reply_to_msg_id:
         event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sdeadly(
+    process = await asyncio.create_subprocess_svisa(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
