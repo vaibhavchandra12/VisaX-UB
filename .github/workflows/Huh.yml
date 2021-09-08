@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "DeadlyBot"
+          find: "Deadly"
 
-          replace: "VisaXBot"
+          replace: "visax"
 
       - name: Create Pull Request
 
