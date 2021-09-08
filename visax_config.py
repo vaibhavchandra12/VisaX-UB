@@ -1,5 +1,5 @@
 
-from DeadlyBot_config import Config
+from VisaXBot_config import Config
 
 class Development(Config):
   # get these values from my.telegram.org. 
@@ -8,7 +8,7 @@ class Development(Config):
 
   # the name to display in your deadly message.
   # If not filled anything then default value is I'm Hêll.
-  YOUR_NAME = "꧁༺ʟɛɢɛռɖǟʀʏ ǟʄ ɖɛǟɖʟʏ ɮօȶ༻꧂"
+  YOUR_NAME = "꧁༺ʟɛɢɛռɖǟʀʏ ǟʄ ʋɨֆǟӼ ɮօȶ༻꧂"
 
   # create any PostgreSQL database.
   # I recommend to use elephantsql and paste that link here
@@ -18,7 +18,7 @@ class Development(Config):
   # Do `python string.py` and fill the on screen prompts.
   # String session will be saved in your saved message of telegram.
   # Put that string here.
-  DEADLY_KAAL_SESSION = "Your value"
+  VISAX_SESSION = "Your value"
 
   # Create a bot in @BotFather
   # And fill the following values with bot token and username.
@@ -42,4 +42,4 @@ class Development(Config):
   SUDO_HANDLER = "!"
 
 # end of required config
-# DeadlyBot
+# VisaXBot
