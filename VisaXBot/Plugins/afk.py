@@ -36,7 +36,7 @@ async def set_not_afk(event):
             event.chat_id,
             "__**Back to Virtual World!**__\nNo Longer AFK.\n⏱️ Was afk for: `"
             + total_afk_time
-            + "`", file=deadlypic
+            + "`", file=visapic
         )
         try:
             await event.client.send_message(  # pylint:disable=E0602
@@ -50,7 +50,7 @@ async def set_not_afk(event):
                 event.chat_id,
                 "Please set `LOGGER_ID` "
                 + "for the proper functioning of afk."
-                + f"Ask in {deadly_grp} to get help!",
+                + f"Ask in {visa_grp} to get help!",
                 reply_to=event.message.id,
                 link_preview=False,
                 silent=True,
@@ -94,14 +94,14 @@ async def on_afk(event):
             message_to_reply = (
                 f"**I'm currently AFK!** \n\n**⏰ AFK Since :**  `{total_afk_time}`\n"
                 )
-        msg = await event.reply(message_to_reply, file=deadlypic)
+        msg = await event.reply(message_to_reply, file=visapic)
         await asyncio.sleep(2)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
             await last_afk_message[event.chat_id].delete()  # pylint:disable=E0602
         last_afk_message[event.chat_id] = msg  # pylint:disable=E0602
 
 
-@bot.on(deadly_cmd(pattern=r"afk (.*)", outgoing=True))  # pylint:disable=E0602
+@bot.on(visa_cmd(pattern=r"afk (.*)", outgoing=True))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -112,7 +112,7 @@ async def _(event):
     global afk_start
     global afk_end
     global reason
-    global deadlypic
+    global visapic
     USER_AFK = {}
     afk_time = None
     last_afk_message = {}
@@ -120,33 +120,33 @@ async def _(event):
     start_1 = datetime.datetime.now()
     afk_start = start_1.replace(microsecond=0)
     reason = event.pattern_match.group(1)
-    deadlypic = await event.client.download_media(krakenop)
+    visapic = await event.client.download_media(krakenop)
     if not USER_AFK:  # pylint:disable=E0602
         last_seen_status = await bot(  # pylint:disable=E0602
             functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             afk_time = datetime.datetime.now()  # pylint:disable=E0602
-        USER_AFK = f"yes: {reason} {deadlypic}"  # pylint:disable=E0602
+        USER_AFK = f"yes: {reason} {visapic}"  # pylint:disable=E0602
         if reason:
             await bot.send_message(
-                event.chat_id, f"**I'm going afk🚶** \n\n**Because :** {reason}", file=deadlypic
+                event.chat_id, f"**I'm going afk🚶** \n\n**Because :** {reason}", file=visapic
             )
         else:
             await bot.send_message(
-                event.chat_id, f"**I am Going afk!**🚶", file=deadlypic)
+                event.chat_id, f"**I am Going afk!**🚶", file=visapic)
         await asyncio.sleep(0.001)
         await event.delete()
         try:
             if reason:
                 await bot.send_message(
                   Config.LOGGER_ID,
-                  f"#AFKTRUE \nAFK mode = **True**\nReason  `{reason}`",file=deadlypic
+                  f"#AFKTRUE \nAFK mode = **True**\nReason  `{reason}`",file=visapic
                  )
             else:
                 await bot.send_message(
                   Config.LOGGER_ID,
-                  f"#AFKTRUE \nAFK mode = **True**",file=deadlypic
+                  f"#AFKTRUE \nAFK mode = **True**",file=visapic
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E06
@@ -185,7 +185,7 @@ async def set_not_night(event):
                 event.chat_id,
                 "Please set `LOGGER_ID` "
                 + "for the proper functioning of night functionality "
-                + "report in {}\n\n `{}`".format(deadly_grp, str(e)),
+                + "report in {}\n\n `{}`".format(visa_grp, str(e)),
                 reply_to=event.message.id,
                 silent=True,
             )
@@ -193,7 +193,7 @@ async def set_not_night(event):
         night_time = None
 
 
-@bot.on(deadly_cmd(pattern=r"night ?(.*)"))
+@bot.on(visa_cmd(pattern=r"night ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
