@@ -11,17 +11,17 @@ DEFAULTUSERBIO = Config.BIO_MSG
 DEL_TIME_OUT = 60
 
 
-@bot.on(deadly_cmd(pattern="autoname"))
+@bot.on(visa_cmd(pattern="autoname"))
 async def _(event):
     if event.fwd_from:
         return
-    deadly = await edit_or_reply(event, "`Starting AutoName Please Wait`")
+    visa = await edit_or_reply(event, "`Starting AutoName Please Wait`")
     if event.fwd_from:
         return
     while True:
         HB = time.strftime("%d-%m-%y")
         HE = time.strftime("%H:%M")
-        name = f"🕒{HE} ⚡{DEADLY_USER}⚡ 📅{HB}"
+        name = f"🕒{HE} ⚡{VISA_USER}⚡ 📅{HB}"
         logger.info(name)
         try:
             await bot(
@@ -33,11 +33,11 @@ async def _(event):
             logger.warning(str(e))
             await asyncio.sleep(ex.seconds)
         await asyncio.sleep(DEL_TIME_OUT)
-        await deadly.edit(f"Auto Name has been started my Master")
+        await visa.edit(f"Auto Name has been started my Master")
         await bot.send_message(Config.LOGGER_ID, "#AUTONAME \n\nAutoname Started!!")
 
 
-@bot.on(deadly_cmd(pattern="autobio"))  # pylint:disable=E0602
+@bot.on(visa_cmd(pattern="autobio"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -67,7 +67,7 @@ async def _(event):
         await bot.send_message(Config.LOGGER_ID, "#AUTOBIO \n\nAutoBio Started!!")
 
 
-@bot.on(deadly_cmd(pattern="reserved", outgoing=True))
+@bot.on(visa_cmd(pattern="reserved", outgoing=True))
 @bot.on(sudo_cmd(pattern="reserved", allow_sudo=True))
 async def mine(event):
     if event.fwd_from:
