@@ -4,7 +4,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from . import *
 
 
-@bot.on(deadly_cmd(pattern="ascii (.*)"))
+@bot.on(visa_cmd(pattern="ascii (.*)"))
 @bot.on(sudo_cmd(pattern="ascii (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -35,12 +35,12 @@ async def _(event):
             output_op,
         )
         await final.edit(
-            f"ASCII art By :- {deadly_mention}")
+            f"ASCII art By :- {visa_mention}")
     await event.client.delete_messages(
         conv.chat_id, [first.id, response.id, second.id, output_op.id, last.id]
     )
 
-@bot.on(deadly_cmd(pattern="line (.*)"))
+@bot.on(visa_cmd(pattern="line (.*)"))
 @bot.on(sudo_cmd(pattern="line (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -71,7 +71,7 @@ async def _(event):
             output_op,
         )
         await final.edit(
-            f"Lines By :- {deadly_mention}")
+            f"Lines By :- {visa_mention}")
     await event.client.delete_messages(
         conv.chat_id, [first.id, response.id, second.id, output_op.id, last.id]
     )
