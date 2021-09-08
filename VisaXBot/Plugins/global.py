@@ -2,8 +2,8 @@ from telethon import events
 from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
 import asyncio
-from DeadlyBot.sql.gban_sql import is_gbanned, gbaner, ungbaner, all_gbanned
-from DeadlyBot.sql import gmute_sql as gsql
+from VisaXBot.sql.gban_sql import is_gbanned, gbaner, ungbaner, all_gbanned
+from VisaXBot.sql import gmute_sql as gsql
 from . import *
 
 
@@ -233,8 +233,8 @@ async def watcher(event):
 
 # gpromote by sameer op
 
-# for DeadlyBot
-# ONLY for DeadlyBot
+# for VisaXBot
+# ONLY for VisaXBot
 # EDITED BY - @SAMEER_795 (SAMEER )
 # KANGERS STAY AWAY
 # JISNE KANG KIYA USKI MA CHOD DI JAYEGI
@@ -254,7 +254,7 @@ from telethon.tl.types import (ChannelParticipantsAdmins,
                                    ChatBannedRights,
                                      MessageEntityMentionName,
                                        MessageMediaPhoto)
-from DeadlyBot.utils import register, errors_handler
+from VisaXBot.utils import register, errors_handler
 from userbot import bot as borg
 
 async def get_full_user(event):  

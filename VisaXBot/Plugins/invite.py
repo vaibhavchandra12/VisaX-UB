@@ -6,7 +6,7 @@ from telethon.errors import (
 from telethon.tl import functions
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.functions.messages import GetFullChatRequest
-from DeadlyBot.utils import deadly_cmd, edit_or_reply, sudo_cmd
+from VisaXBot.utils import deadly_cmd, edit_or_reply, sudo_cmd
 
 async def get_chatinfo(event):
     chat = event.pattern_match.group(1)

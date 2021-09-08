@@ -16,9 +16,9 @@ from telethon import events
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 
-from DeadlyBot import *
-from DeadlyBot.helpers import *
-from DeadlyBot.config import Config
+from VisaXBot import *
+from VisaXBot.helpers import *
+from VisaXBot.config import Config
 
 
 # this shit handles errors
@@ -75,4 +75,4 @@ def errors_handler(func):
 
     return wrapper
 
-# DeadlyBot
+# VisaXBot

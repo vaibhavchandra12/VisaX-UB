@@ -89,7 +89,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        if event.query.user_id == bot.uid and query == "DeadlyBot_help":
+        if event.query.user_id == bot.uid and query == "VisaXBot_help":
             rev_text = query[::-1]
             veriler = button(0, sorted(CMD_HELP))
             apn = []

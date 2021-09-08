@@ -114,10 +114,10 @@ from telethon.errors import ChatAdminRequiredError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.users import GetFullUserRequest
 
-from DeadlyBot.utils import deadly_cmd, edit_or_reply, sudo_cmd
+from VisaXBot.utils import deadly_cmd, edit_or_reply, sudo_cmd
 DEFAULTUSER = Config.YOUR_NAME
 
-DeadlyBot = bot.uid
+VisaXBot = bot.uid
 
 
 bots = "@MissRose_bot"
@@ -134,7 +134,7 @@ if G_BAN_LOGGER_GROUP:
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit(f"Starting superfban By [{DEFAULTUSER}](tg://user?id={DeadlyBot}) 😈")
+    await event.edit(f"Starting superfban By [{DEFAULTUSER}](tg://user?id={VisaXBot}) 😈")
     fedList = []
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
@@ -239,7 +239,7 @@ async def _(event):
         if len(fedList) == 0:
             await event.edit("Something went wrong.")
             return
-    await event.edit(f"Fbaning in {len(fedList)} feds by [{DEFAULTUSER}](tg://user?id={DeadlyBot}) 😈")
+    await event.edit(f"Fbaning in {len(fedList)} feds by [{DEFAULTUSER}](tg://user?id={VisaXBot}) 😈")
     try:
         await event.client.send_message(chat, f"/start")
     except:
@@ -258,9 +258,9 @@ async def _(event):
             continue
         await event.client.send_message(chat, f"/joinfed {fed}")
         await asyncio.sleep(3)
-        await event.client.send_message(chat, f"/fban {FBAN} {REASON} \n\n#SUPERFBAN_BY_DeadlyBot")
+        await event.client.send_message(chat, f"/fban {FBAN} {REASON} \n\n#SUPERFBAN_BY_VisaXBot")
         await asyncio.sleep(3)
-    await event.edit(f"SuperFBan Completed. Affected {len(fedList) - exCount} feds by [{DEFAULTUSER}](tg://user?id={DeadlyBot}) 😈")
+    await event.edit(f"SuperFBan Completed. Affected {len(fedList) - exCount} feds by [{DEFAULTUSER}](tg://user?id={VisaXBot}) 😈")
 
          
             

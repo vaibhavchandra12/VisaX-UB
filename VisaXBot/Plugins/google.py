@@ -219,7 +219,7 @@ async def gps(event):
         
     await edit_or_reply(event, "Finding😁")
 
-    geolocator = Nominatim(user_agent="DeadlyBot")
+    geolocator = Nominatim(user_agent="VisaXBot")
     geoloc = geolocator.geocode(input_str)
 
     if geoloc:

@@ -16,9 +16,9 @@ from telethon import events
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 
-from DeadlyBot import *
-from DeadlyBot.helpers import *
-from DeadlyBot.config import Config
+from VisaXBot import *
+from VisaXBot.helpers import *
+from VisaXBot.config import Config
 
 
 # either edit or reply that msg
@@ -100,4 +100,4 @@ async def delete_deadly(event, text, time=None, parse_mode=None, link_preview=No
     await asyncio.sleep(time)
     return await deadlyevent.delete()
 
-# DeadlyBot
+# VisaXBot

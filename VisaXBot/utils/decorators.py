@@ -16,9 +16,9 @@ from telethon import events
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 
-from DeadlyBot import *
-from DeadlyBot.helpers import *
-from DeadlyBot.config import Config
+from VisaXBot import *
+from VisaXBot.helpers import *
+from VisaXBot.config import Config
 
 # admin cmd or normal user cmd
 def deadly_cmd(pattern=None, command=None, **args):
@@ -61,7 +61,7 @@ def deadly_cmd(pattern=None, command=None, **args):
 
     args["outgoing"] = True
     # decides that other users can use it or not
-    # DeadlyBot outgoing
+    # VisaXBot outgoing
     if allow_sudo:
         args["from_users"] = list(Config.SUDO_USERS)
         # Mutually exclusive with outgoing (can only set one of either).
@@ -73,14 +73,14 @@ def deadly_cmd(pattern=None, command=None, **args):
         args["outgoing"] = True
 
     # blacklisted chats. 
-    # DeadlyBot will not respond in these chats.
+    # VisaXBot will not respond in these chats.
     args["blacklist_chats"] = True
     black_list_chats = list(Config.BL_CHAT)
     if black_list_chats:
         args["chats"] = black_list_chats
 
     # blacklisted chats.
-    # DeadlyBot will not respond in these chats.
+    # VisaXBot will not respond in these chats.
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         del args["allow_edited_updates"]
 
@@ -128,7 +128,7 @@ def sudo_cmd(pattern=None, command=None, **args):
                 SUDO_LIST.update({file_test: [cmd]})
     args["outgoing"] = True
     # outgoing check
-    # DeadlyBot
+    # VisaXBot
     if allow_sudo:
         args["from_users"] = list(Config.SUDO_USERS)
         # Mutually exclusive with outgoing (can only set one of either).
@@ -138,17 +138,17 @@ def sudo_cmd(pattern=None, command=None, **args):
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
     # blacklisted chats
-    # DeadlyBot won't respond here
+    # VisaXBot won't respond here
     args["blacklist_chats"] = True
     black_list_chats = list(Config.BL_CHAT)
     if black_list_chats:
         args["chats"] = black_list_chats
     # blacklisted chats
-    # DeadlyBot won't respond here
+    # VisaXBot won't respond here
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         del args["allow_edited_updates"]
     # outgoing check
-    # DeadlyBot
+    # VisaXBot
     return events.NewMessage(**args)
 
 
@@ -296,4 +296,4 @@ def command(**args):
 
     return decorator
 
-# DeadlyBot
+# VisaXBot

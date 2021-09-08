@@ -45,7 +45,7 @@ async def restart(event):
         app = Heroku.apps()[HEROKU_APP_NAME]
         app.restart()
     else:                  
-        execl(executable, executable, "bash", "DeadlyBot")
+        execl(executable, executable, "bash", "VisaXBot")
 
 
 @bot.on(deadly_cmd(pattern="restart$"))

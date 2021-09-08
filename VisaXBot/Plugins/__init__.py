@@ -1,20 +1,20 @@
 import datetime
-from DeadlyBot import *
-from DeadlyBot.config import Config
-from DeadlyBot.helpers import *
-from DeadlyBot.utils import *
-from DeadlyBot.random_strings import *
-from DeadlyBot.version import __deadly__
+from VisaXBot import *
+from VisaXBot.config import Config
+from VisaXBot.helpers import *
+from VisaXBot.utils import *
+from VisaXBot.random_strings import *
+from VisaXBot.version import __deadly__
 from telethon import version
 
 
 DEADLY_USER = bot.me.first_name
 official_sameer = bot.uid
 deadly_mention = f"[{DEADLY_USER}](tg://user?id={official_sameer})"
-deadly_logo = "./DeadlyBot/resources/pics/DeadlyBot_logo.jpg"
-cjb = "./DeadlyBot/resources/pics/cjb.jpg"
-restlo = "./DeadlyBot/resources/pics/rest.jpeg"
-shuru = "./DeadlyBot/resources/pics/shuru.jpg"
+deadly_logo = "./VisaXBot/resources/pics/VisaXBot_logo.jpg"
+cjb = "./VisaXBot/resources/pics/cjb.jpg"
+restlo = "./VisaXBot/resources/pics/rest.jpeg"
+shuru = "./VisaXBot/resources/pics/shuru.jpg"
 hl = Config.HANDLER
 shl = Config.SUDO_HANDLER
 deadly_ver = __deadly__
@@ -70,4 +70,4 @@ WELCOME_FORMAT = """**Use these fomats in your welcome note to make them attract
 """
 # will add more soon
 
-# DeadlyBot
+# VisaXBot
