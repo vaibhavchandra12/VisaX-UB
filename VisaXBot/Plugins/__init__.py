@@ -4,20 +4,20 @@ from VisaXBot.config import Config
 from VisaXBot.helpers import *
 from VisaXBot.utils import *
 from VisaXBot.random_strings import *
-from VisaXBot.version import __deadly__
+from VisaXBot.version import __visa__
 from telethon import version
 
 
-DEADLY_USER = bot.me.first_name
-official_sameer = bot.uid
-deadly_mention = f"[{DEADLY_USER}](tg://user?id={official_sameer})"
-deadly_logo = "./VisaXBot/resources/pics/VisaXBot_logo.jpg"
+VISA_USER = bot.me.first_name
+CALL_ME_VP = bot.uid
+visa_mention = f"[{VISA_USER}](tg://user?id={CALL_ME-VP})"
+visa_logo = "./VisaXBot/resources/pics/VisaXBot_logo.jpg"
 cjb = "./VisaXBot/resources/pics/cjb.jpg"
 restlo = "./VisaXBot/resources/pics/rest.jpeg"
 shuru = "./VisaXBot/resources/pics/shuru.jpg"
 hl = Config.HANDLER
 shl = Config.SUDO_HANDLER
-deadly_ver = __deadly__
+visa_ver = __visa__
 tel_ver = version.__version__
 
 async def get_user_id(ids):
@@ -41,17 +41,17 @@ else:
 
 START_TIME = datetime.datetime.now()
 uptime = f"{str(datetime.datetime.now() - START_TIME).split('.')[0]}"
-my_channel = Config.MY_CHANNEL or "deadly_kaal_bot"
-my_group = Config.MY_GROUP or "deadly_kaal_support"
+my_channel = Config.MY_CHANNEL or "Visa_Update"
+my_group = Config.MY_GROUP or "Visa_support"
 if "@" in my_channel:
     my_channel = my_channel.replace("@", "")
 if "@" in my_group:
     my_group = my_group.replace("@", "")
 
-chnl_link = "https://t.me/deadly_kaal_bot"
-deadly_channel = f"[†hê ∂єα∂ℓу кααℓ Bσт]({chnl_link})"
-grp_link = "https://t.me/deadly_kaal_support"
-deadly_grp = f"[∂єα∂ℓу кααℓ Bσт Group]({grp_link})"
+chnl_link = "https://t.me/Visa_Update"
+visa_channel = f"[ȶɦɛ ʋɨֆǟ-Ӽ ɮօȶ]({chnl_link})"
+grp_link = "https://t.me/Visa_support"
+visa_grp = f"[ʋɨֆǟ-Ӽ ɮօȶ ɢʀօʊք]({grp_link})"
 
 WELCOME_FORMAT = """**Use these fomats in your welcome note to make them attractive.**
   {mention} :  To mention the user
