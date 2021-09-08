@@ -46,7 +46,7 @@ async def on_pm_click(event):
             "You need to join the channel first.", alert=True
         )
     await bot.edit_permissions(
-        event.chat_id, int(deadly[0]), send_message=True, until_date=None
+        event.chat_id, int(visa[0]), send_message=True, until_date=None
     )
     await event.edit("Yay! You can chat now !!")
 """
@@ -75,7 +75,7 @@ async def forcesub(event):
         await res[0].click(event.chat_id, reply_to=event.action_message.id)
 
 
-@bot.on(deadly_cmd(pattern="fsub ?(.*)"))
+@bot.on(visa_cmd(pattern="fsub ?(.*)"))
 @bot.on(sudo_cmd(pattern="fsub ?(.*)", allow_sudo=True))
 async def _(event):
     if event.is_private:
@@ -101,7 +101,7 @@ async def _(event):
     await eor(event, "Implementing **Force Subscribe** In This Channel !!")
 
 
-@bot.on(deadly_cmd(pattern="rmfsub"))
+@bot.on(visa_cmd(pattern="rmfsub"))
 @bot.on(sudo_cmd(pattern="rmfsub", allow_sudo=True))
 async def removef(event):
     hel_ = rem_fsub(event.chat_id)
@@ -110,7 +110,7 @@ async def removef(event):
     await eor(e, "Deactivated **Force Subscribe** In This Channel !!")
 
 
-@bot.on(deadly_cmd(pattern="chfsub"))
+@bot.on(visa_cmd(pattern="chfsub"))
 @bot.on(sudo_cmd(pattern="chfsub", allow_sudo=True))
 async def getfsub(event):
     all_chat = is_fsub(event.chat_id)
@@ -120,7 +120,7 @@ async def getfsub(event):
     await eor(event, f"**ForceSub Enabled ** :\n- {channel.title} `({all})`")
 
 
-@bot.on(deadly_cmd(pattern="lsfsub$"))
+@bot.on(visa_cmd(pattern="lsfsub$"))
 @bot.on(sudo_cmd(pattern="lsfsub$", allow_sudo=True))
 async def list(event):
     channels = all_fsub()
