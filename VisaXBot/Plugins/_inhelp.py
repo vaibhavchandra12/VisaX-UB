@@ -17,9 +17,9 @@ from telethon.tl.functions.messages import ExportChatInviteRequest
 
 from . import *
 
-deadly_row = Config.BUTTONS_IN_HELP
-deadly_emoji = Config.EMOJI_IN_HELP
-deadly_pic = Config.PMPERMIT_PIC or "https://telegra.ph/file/58df4d86400a32acd.jpg"
+visa_row = Config.BUTTONS_IN_HELP
+visa_emoji = Config.EMOJI_IN_HELP
+visa_pic = Config.PMPERMIT_PIC or "https://telegra.ph/file/58df4d86400a32acd.jpg"
 cstm_pmp = "ʏᴏᴜ ʜᴀᴠᴇ ᴛʀᴇsᴘᴀssᴇᴅ ᴛᴏ ᴍʏ ᴍᴀsᴛᴇʀ's ᴘᴍ!\nᴛʜɪs ɪs ɪʟʟᴇɢᴀʟ ᴀɴᴅ ʀᴇɢᴀʀᴅᴇᴅ ᴀs ᴀ ᴄʀɪᴍᴇ."
 ALV_PIC = Config.ALIVE_PIC
 
@@ -40,15 +40,15 @@ mssge = (
 
 USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
 
-deadly_FIRST = (
-    "⚠️ 𝐇𝐄𝐋𝐋𝐎, 𝐓𝐇𝐈𝐒 𝐈𝐒 𝐃𝐄𝐀𝐃𝐋𝐘 𝐊𝐀𝐀𝐋 𝐁𝐎𝐓 𝐔𝐋𝐓𝐑𝐀 𝐏𝐑𝐈𝐕𝐀𝐓𝐄 𝐒𝐄𝐂𝐔𝐑𝐈𝐓𝐘 𝐏𝐑𝐎𝐓𝐎𝐂𝐎𝐋 ⚠️\n"
+visa_FIRST = (
+    "⚠️ 𝐇𝐄𝐋𝐋𝐎, 𝐓𝐇𝐈𝐒 𝐈𝐒 𝐕𝐢𝐬𝐚-𝐗 𝐁𝐎𝐓 𝐔𝐋𝐓𝐑𝐀 𝐏𝐑𝐈𝐕𝐀𝐓𝐄 𝐒𝐄𝐂𝐔𝐑𝐈𝐓𝐘 𝐏𝐑𝐎𝐓𝐎𝐂𝐎𝐋 ⚠️\n"
     f"\n{cstm_pmp}\n\n"
     "ᴛᴏ sᴛᴀʀᴛ ᴀ ᴠᴀʟɪᴅ ᴄᴏɴᴠᴇʀsᴀᴛɪᴏɴ\n\n🔸ʀᴇɢɪsᴛᴇʀ! ʏᴏᴜʀ ʀᴇǫᴜᴇsᴛ🔹\n🔸sᴇɴᴅ `/start` ᴛᴏ ʀᴇɢɪsᴛᴇʀ🔹\n🔸ʜᴏᴘᴇғᴜʟʟʏ ᴜ ᴡɪʟʟ ɢᴇᴛ ᴀ ʀᴇᴘʟʏ🔹"
 )
 
 
 def button(page, modules):
-    Row = deadly_row
+    Row = visa_row
     Column = 3
 
     modules = sorted([modul for modul in modules if not modul.startswith("_")])
@@ -61,7 +61,7 @@ def button(page, modules):
     for pairs in pairs[page]:
         buttons.append(
             [
-                custom.Button.inline(f"{deadly_emoji} " + pair + f" {deadly_emoji}", data=f"Information[{page}]({pair})")
+                custom.Button.inline(f"{visa_emoji} " + pair + f" {visa_emoji}", data=f"Information[{page}]({pair})")
                 for pair in pairs
             ]
         )
@@ -69,13 +69,13 @@ def button(page, modules):
     buttons.append(
         [
             custom.Button.inline(
-               f"◀️ 𝙱𝙰𝙲𝙺 {deadly_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
+               f"◀️ 𝙱𝙰𝙲𝙺 {visa_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
             ),
             custom.Button.inline(
                f"• ❌ •", data="𝙲𝙻𝙾𝚂𝙴"
             ),
             custom.Button.inline(
-               f"{deadly_emoji} 𝙽𝙴𝚇𝚃 ▶️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
+               f"{visa_emoji} 𝙽𝙴𝚇𝚃 ▶️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
             ),
         ]
     )
@@ -98,15 +98,15 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     apn.append(y)
             result = await builder.article(
                 f"Hey! Only use .help please",
-                text=f"🔰 **{deadly_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
+                text=f"🔰 **{visa_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
                 buttons=veriler[1],
                 link_preview=False,
             )
         elif event.query.user_id == bot.uid and query.startswith("fsub"):
             hunter = event.pattern_match.group(1)
-            deadly = hunter.split("+")
-            user = await bot.get_entity(int(deadly[0]))
-            channel = await bot.get_entity(int(deadly[1]))
+            visa = hunter.split("+")
+            user = await bot.get_entity(int(visa[0]))
+            channel = await bot.get_entity(int(visa[1]))
             msg = f"**👋 Welcome** [{user.first_name}](tg://user?id={user.id}), \n\n**📍 You need to Join** {channel.title} **to chat in this group.**"
             if not channel.username:
                 link = (await bot(ExportChatInviteRequest(channel))).link
@@ -124,9 +124,9 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             ]
 
         elif event.query.user_id == bot.uid and query == "alive":
-            he_ll = alive_txt.format(Config.ALIVE_MSG, tel_ver, deadly_ver, uptime, abuse_m, is_sudo)
+            he_ll = alive_txt.format(Config.ALIVE_MSG, tel_ver, visa_ver, uptime, abuse_m, is_sudo)
             alv_btn = [
-                [Button.url(f"{DEADLY_USER}", f"tg://openmessage?user_id={official_sameer}")],
+                [Button.url(f"{VISA_USER}", f"tg://openmessage?user_id={official_sameer}")],
                 [Button.url("My Channel", f"https://t.me/{my_channel}"), 
                 Button.url("My Group", f"https://t.me/{my_group}")],
             ]
@@ -141,22 +141,22 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 result = builder.document(
                     ALV_PIC,
                     text=he_ll,
-                    title="deadlyBot Alive",
+                    title="VisaXBot Alive",
                     buttons=alv_btn,
                     link_preview=False,
                 )
             else:
                 result = builder.article(
                     text=he_ll,
-                    title="deadlyBot Alive",
+                    title="VisaXBot Alive",
                     buttons=alv_btn,
                     link_preview=False,
                 )
 
         elif event.query.user_id == bot.uid and query == "pm_warn":
-            hel_l = deadly_FIRST.format(deadly_mention, mssge)
+            hel_l = visa_FIRST.format(visa_mention, mssge)
             result = builder.photo(
-                file=deadly_pic,
+                file=visa_pic,
                 text=hel_l,
                 buttons=[
                     [
@@ -171,7 +171,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         elif event.query.user_id == bot.uid and query == "repo":
             result = builder.article(
                 title="Repository",
-                text=f"**⚡ lєgєηdяy Λƒ ∂єα∂ℓу кααℓ Bσт  ⚡**",
+                text=f"**⚡ ʟɛɢɛռɖǟʀʏ ǟʄ ʋɨֆǟ-Ӽ ɮօȶ  ⚡**",
                 buttons=[
                     [Button.url("📑 Repo 📑", "https://github.com/DEADLY-FIGHTERS/DEADLY-KAAL-BOT")],
                     [Button.url("🚀 Deploy 🚀", "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2Fdeadly-fighters%2Fdeadly-kaal-Bot&template=https%3A%2F%2Fgithub.com%2Fdeadly-fighters/deadly-kaal-bot%2Fdeadly-kaal-bot")],
@@ -189,13 +189,13 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
         else:
             result = builder.article(
-                "@Its_deadlyBot",
-                text="""**Hey! This is [∂єα∂ℓу кααℓ Bσт](https://t.me/deadly_kaal_bot) \nYou can know more about me from the links given below 👇**""",
+                "@Its_visaxBot",
+                text="""**Hey! This is [ʋɨֆǟ-Ӽ ɮօȶ](https://t.me/Visa_Update) \nYou can know more about me from the links given below 👇**""",
                 buttons=[
                     [
-                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/deadly_Bot_op"),
+                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/Visa_Update"),
                         custom.Button.url(
-                            "⚡ GROUP ⚡", "https://t.me/DEADLY_KAAL_SUPPORT"
+                            "⚡ GROUP ⚡", "https://t.me/Visa_SUPPORT"
                         ),
                     ],
                     [
@@ -219,7 +219,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"🔰 This is MιкαsαBσт PM Security for {deadly_mention} to keep away unwanted retards from spamming PM..."
+                f"🔰 This is 𝘃ɪ𝒔ѧ-𝙭 ʙο𝞽 PM Security for {visa_mention} to keep away unwanted retards from spamming PM..."
             )
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"req")))
@@ -229,14 +229,14 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"✅ **Request Registered** \n\n{deadly_mention} will now decide to look for your request or not.\n😐 Till then wait patiently and don't spam!!"
+                f"✅ **Request Registered** \n\n{visa_mention} will now decide to look for your request or not.\n😐 Till then wait patiently and don't spam!!"
             )
             target = await event.client(GetFullUserRequest(event.query.user_id))
             first_name = html.escape(target.user.first_name)
             ok = event.query.user_id
             if first_name is not None:
                 first_name = first_name.replace("\u2060", "")
-            tosend = f"**👀 Hey {deadly_mention} !!** \n\n⚜️ You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
+            tosend = f"**👀 Hey {visa_mention} !!** \n\n⚜️ You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
             await bot.send_message(LOG_GP, tosend)
 
 
@@ -248,14 +248,14 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"Ahh!! You here to do chit-chat!!\n\nPlease wait for {deadly_mention} to come. Till then keep patience and don't spam."
+                f"Ahh!! You here to do chit-chat!!\n\nPlease wait for {visa_mention} to come. Till then keep patience and don't spam."
             )
             target = await event.client(GetFullUserRequest(event.query.user_id))
             ok = event.query.user_id
             first_name = html.escape(target.user.first_name)
             if first_name is not None:
                 first_name = first_name.replace("\u2060", "")
-            tosend = f"**👀 Hey {deadly_mention} !!** \n\n⚜️ You Got A PM from  [{first_name}](tg://user?id={ok})  for random chats!!"
+            tosend = f"**👀 Hey {visa_mention} !!** \n\n⚜️ You Got A PM from  [{first_name}](tg://user?id={ok})  for random chats!!"
             await bot.send_message(LOG_GP, tosend)
 
 
@@ -284,17 +284,17 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
     async def on_pm_click(event):
         hunter = (event.data_match.group(1)).decode("UTF-8")
-        deadly = hunter.split("+")
-        if not event.sender_id == int(deadly[0]):
+        visa = hunter.split("+")
+        if not event.sender_id == int(visa[0]):
             return await event.answer("This Ain't For You!!", alert=True)
         try:
-            await bot(GetParticipantRequest(int(deadly[1]), int(deadly[0])))
+            await bot(GetParticipantRequest(int(visa[1]), int(visa[0])))
         except UserNotParticipantError:
             return await event.answer(
                 "You need to join the channel first.", alert=True
             )
         await bot.edit_permissions(
-            event.chat_id, int(deadly[0]), send_message=True, until_date=None
+            event.chat_id, int(visa[0]), send_message=True, until_date=None
         )
         await event.edit("Yay! You can chat now !!")
 
@@ -310,7 +310,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     for y in x:
                         apn.append(y)
                 await event.edit(
-                    f"🔰 **{deadly_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
+                    f"🔰 **{visa_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
                     buttons=simp[1],
                     link_preview=False,
                 )
@@ -322,10 +322,10 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
-            veriler = custom.Button.inline(f"{deadly_emoji} Re-Open Menu {deadly_emoji}", data="reopen")
-            await event.edit(f"**⚜️ ∂єα∂ℓу кααℓ Bσт Mєηυ ρяσνιDєя ιs ησω Clσsє∂ ⚜️**\n\n**Bot Of :**  {deadly_mention}\n\n        [©️ deadly ™️]({chnl_link})", buttons=veriler, link_preview=False)
+            veriler = custom.Button.inline(f"{visa_emoji} Re-Open Menu {visa_emoji}", data="reopen")
+            await event.edit(f"**⚜️ ∂єα∂ℓу кααℓ Bσт Mєηυ ρяσνιDєя ιs ησω Clσsє∂ ⚜️**\n\n**Bot Of :**  {visa_mention}\n\n        [©️ deadly ™️]({chnl_link})", buttons=veriler, link_preview=False)
         else:
-            reply_pop_up_alert = "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © deadly ™"
+            reply_pop_up_alert = "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © visa ™"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
    
 
@@ -339,13 +339,13 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 apn.append(y)
         if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
             await event.edit(
-                f"🔰 **{deadly_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}`\n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : {page + 1}/{veriler[0]}",
+                f"🔰 **{visa_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}`\n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : {page + 1}/{veriler[0]}",
                 buttons=veriler[1],
                 link_preview=False,
             )
         else:
             return await event.answer(
-                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © MιкαsαBσт ™",
+                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © 𝘃ɪ𝒔ѧ-𝙭ʙο𝞽 ™",
                 cache_time=0,
                 alert=True,
             )
@@ -370,7 +370,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
 
         buttons = [buttons[i : i + 2] for i in range(0, len(buttons), 2)]
-        buttons.append([custom.Button.inline(f"{deadly_emoji} Main Menu {deadly_emoji}", data=f"page({page})")])
+        buttons.append([custom.Button.inline(f"{visa_emoji} Main Menu {visa_emoji}", data=f"page({page})")])
         if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
             await event.edit(
                 f"**📗 File :**  `{commands}`\n**🔢 Number of commands :**  `{len(CMD_HELP_BOT[commands]['commands'])}`",
@@ -379,7 +379,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             return await event.answer(
-                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © deadly ™",
+                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © visa ™",
                 cache_time=0,
                 alert=True,
             )
@@ -414,13 +414,13 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             await event.edit(
                 result,
                 buttons=[
-                    custom.Button.inline(f"{deadly_emoji} Return {deadly_emoji}", data=f"Information[{page}]({cmd})")
+                    custom.Button.inline(f"{visa_emoji} Return {visa_emoji}", data=f"Information[{page}]({cmd})")
                 ],
                 link_preview=False,
             )
         else:
             return await event.answer(
-                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © MιкαsαBσт ™",
+                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © 𝘃ɪ𝒔ѧ-𝙭ʙο𝞽 ™",
                 cache_time=0,
                 alert=True,
             )
