@@ -6,7 +6,7 @@ from selenium import webdriver
 
 from . import *
 
-@bot.on(deadly_cmd(pattern="(webshot|screenshot) (.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="(webshot|screenshot) (.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="(webshot|screenshot) (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -14,7 +14,7 @@ async def _(event):
     if Config.GOOGLE_CHROME_BIN is None:
         await eod(event, "need to install Google Chrome. Module Stopping.")
         return
-    deadly = await eor(event, "Processing ...weit")
+    visa = await eor(event, "Processing ...weit")
     start = datetime.datetime.now()
     try:
         chrome_options = webdriver.ChromeOptions()
@@ -24,22 +24,22 @@ async def _(event):
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.binary_location = Config.GOOGLE_CHROME_BIN
-        await deadly.edit("Starting Google Chrome BIN")
+        await visa.edit("Starting Google Chrome BIN")
         driver = webdriver.Chrome(chrome_options=chrome_options)
         input_str = event.pattern_match.group(1)
         driver.get(input_str)
-        await deadly.edit("Calculating Page Dimensions")
+        await visa.edit("Calculating Page Dimensions")
         height = driver.execute_script(
             "return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);"
         )
         width = driver.execute_script(
             "return Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);"
         )
-        await deadly.edit("Painting web-page")
+        await visa.edit("Painting web-page")
         driver.set_window_size(width + 100, height + 100)
         im_png = driver.get_screenshot_as_png()
         driver.close()
-        await deadly.edit("Stopping Google Chrome BIN")
+        await visa.edit("Stopping Google Chrome BIN")
         message_id = event.message.id
         if event.reply_to_msg_id:
             message_id = event.reply_to_msg_id
@@ -56,12 +56,12 @@ async def _(event):
             )
         end = datetime.datetime.now()
         ms = (end - start).seconds
-        await deadly.edit(f"Completed screencapture Process in {ms} seconds")
+        await visa.edit(f"Completed screencapture Process in {ms} seconds")
     except Exception:
-        await eod(deadly, traceback.format_exc())
+        await eod(visa, traceback.format_exc())
 
 CmdHelp("capture").add_command(
-        "screenshot", "<link>", "Gives out the web screenshot of given link via Google Crome Bin in .png format", ".screenshot https://github.com/deadlyboy-op/VisaXBot"
+        "screenshot", "<link>", "Gives out the web screenshot of given link via Google Crome Bin in .png format", ".screenshot https://github.com/callmevp/VisaXBot"
 ).add_command(
 	"webshot", "<link>", f"Same as  {hl}screenshot."
 ).add_info(
