@@ -3,7 +3,7 @@ import requests
 from . import *
 
 
-@bot.on(deadly_cmd(pattern="app (.*)"))
+@bot.on(visa_cmd(pattern="app (.*)"))
 @bot.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
 async def apk(event):
     if event.fwd_from:
@@ -67,7 +67,7 @@ async def apk(event):
             + app_link
             + "'>View in Play Store</a>"
         )
-        app_details += f"\n\n==> {DEADLY_USER} <=="
+        app_details += f"\n\n==> {VISA_USER} <=="
         await event.edit(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
         await event.edit("No result found in search. Please enter **Valid app name**")
@@ -75,7 +75,7 @@ async def apk(event):
         await event.edit("Exception Occured:- " + str(err))
 
 
-@bot.on(deadly_cmd(pattern="appr (.*)"))
+@bot.on(visa_cmd(pattern="appr (.*)"))
 @bot.on(sudo_cmd(pattern="appr (.*)", allow_sudo=True))
 async def apkr(event):
     if event.fwd_from:
@@ -148,7 +148,7 @@ async def apkr(event):
         await event.edit("Exception Occured:- " + str(err))
 
 
-@bot.on(deadly_cmd(pattern="mods ?(.*)"))
+@bot.on(visa_cmd(pattern="mods ?(.*)"))
 @bot.on(sudo_cmd(pattern="mods ?(.*)", allow_sudo=True))
 async def mod(event):
     if event.fwd_from:
