@@ -4,7 +4,7 @@
 from . import *
 
 x = True
-@borg.on(deadly_cmd(pattern="raid"))
+@borg.on(visa_cmd(pattern="raid"))
 async def deadlyraid(event):
     while x != False:
        
