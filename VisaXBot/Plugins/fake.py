@@ -7,7 +7,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 
 from . import *
 
-@bot.on(deadly_cmd(pattern="picgen"))
+@bot.on(visa_cmd(pattern="picgen"))
 @bot.on(sudo_cmd(pattern="picgen", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -19,14 +19,14 @@ async def _(event):
       with open("HELLBOT.jpg", 'wb') as f:
         f.write(response.content)
     
-    captin = f"Fake Image By {deadly_mention}"
+    captin = f"Fake Image By {visa_mention}"
     fole = "HELLBOT.jpg"
     await bot.send_file(event.chat_id, fole, caption=captin)
     await event.delete()
     os.system("rm /root/VisaXBot/HELLBOT.jpg ")
 
 
-@bot.on(deadly_cmd(pattern="fake ?(.*)"))
+@bot.on(visa_cmd(pattern="fake ?(.*)"))
 @bot.on(sudo_cmd(pattern="fake ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -39,7 +39,7 @@ async def _(event):
     async with borg.action(event.chat_id, action):
         await asyncio.sleep(86400)  # type for 10 seconds
 
-@bot.on(deadly_cmd(pattern="gbam$"))
+@bot.on(visa_cmd(pattern="gbam$"))
 @bot.on(sudo_cmd(pattern="gbam$", allow_sudo=True))
 async def gbun(event):
     if event.fwd_from:
@@ -63,7 +63,7 @@ async def gbun(event):
         # make meself invulnerable cuz why not xD
         if idd == 1432756163:
             await reply_message.reply(
-                "`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 69$ to my master__ [HellBoy](https://t.me/official_sameer) __to release your account__😏"
+                "`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 69$ to my master__ [CALLMEVP](https://t.me/CALL_ME_VP) __to release your account__😏"
             )
         else:
             jnl = (
