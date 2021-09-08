@@ -9,7 +9,7 @@ from . import *
 
 lg_id = Config.LOGGER_ID
 
-@bot.on(deadly_cmd(pattern="exec(?: |$|\n)(.*)", command="exec"))
+@bot.on(visa_cmd(pattern="exec(?: |$|\n)(.*)", command="exec"))
 @bot.on(sudo_cmd(pattern="exec(?: |$|\n)(.*)", command="exec", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -17,15 +17,15 @@ async def _(event):
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
         return await eod(event, "`What should i execute?..`")
-    deadlyevent = await eor(event, "`Executing.....`")
-    process = await asyncio.create_subprocess_sdeadly(
+    visaevent = await eor(event, "`Executing.....`")
+    process = await asyncio.create_subprocess_svisa(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
     result = str(stdout.decode().strip()) + str(stderr.decode().strip())
-    deadlyuser = await event.client.get_me()
-    if deadlyuser.username:
-        curruser = deadlyuser.username
+    visauser = await event.client.get_me()
+    if visauser.username:
+        curruser = visauser.username
     else:
         curruser = "VisaXBot"
     uid = os.geteuid()
@@ -40,7 +40,7 @@ async def _(event):
     )
 
 
-@bot.on(deadly_cmd(pattern="eval(?: |$|\n)(.*)", command="eval"))
+@bot.on(visa_cmd(pattern="eval(?: |$|\n)(.*)", command="eval"))
 @bot.on(sudo_cmd(pattern="eval(?: |$|\n)(.*)", command="eval", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -48,7 +48,7 @@ async def _(event):
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
         return await eod(event, "`What should i run ?..`")
-    deadlyevent = await eor(event, "`Running ...`")
+    visaevent = await eor(event, "`Running ...`")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -72,7 +72,7 @@ async def _(event):
     else:
         evaluation = "Success"
     final_output = f"•  Eval : \n`{cmd}` \n\n•  Result : \n`{evaluation}` \n"
-    await eor(deadlyevent, "**Eval Command Executed. Check out LOGGER for result.**")
+    await eor(visasevent, "**Eval Command Executed. Check out LOGGER for result.**")
     await event.client.send_message(
         lg_id,
         f"#EVAL \n\nEval command was executed sucessfully. \n\n{final_output}",
@@ -92,7 +92,7 @@ async def aexec(code, smessatatus):
     )
 
 
-@bot.on(deadly_cmd(pattern="bash ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="bash ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="bash ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -103,7 +103,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sdeadly(
+    process = await asyncio.create_subprocess_svisa(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
