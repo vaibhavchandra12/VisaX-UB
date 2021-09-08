@@ -1,5 +1,5 @@
 # If you kang this plugin please don't remove credit
-#credit goes to @D3_krish he make this plugin for Deadly userbot
+#credit goes to @D3_krish he make this plugin for visax userbot
 
 import os
 

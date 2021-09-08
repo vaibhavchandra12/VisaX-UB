@@ -48,7 +48,7 @@
 - Fill API ID, API HASH, Phone number (with country code).
 - Paste the OTP received on Telegram.
 - If You have Enabled 2-Step Verification then fill your password.
-- Your Deadly Bot Session Will be saved in your Telegram Saved Message.
+- Your visax Bot Session Will be saved in your Telegram Saved Message.
 
 [![repl]()](https://replit.com/@sameerpanthi/DEADLY-FIGHTERS-BOT#main.py)
     
@@ -66,7 +66,7 @@
 
 
 - We won't be responsible for any kind of ban due to this bot.
-- Deadly was made for fun purpose and to make group management easier.
+- visax was made for fun purpose and to make group management easier.
 - It's your concern if you spam and gets your account banned.
 - Also, Forks won't be entertained.
 - If you fork this repo and edit plugins, it's your concern for further updates.
