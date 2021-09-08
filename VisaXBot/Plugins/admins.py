@@ -330,42 +330,42 @@ async def muth(visa):
         else:
             await eor(visa, "**Chup Reh Lawde 🥴\n`**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
     else:
-        deadlyevent = await eor(visa, "`Muting...`")
+        visaevent = await eor(visa, "`Muting...`")
         input_str = visa.pattern_match.group(1)
         chat = await visa.get_chat()
         if visa.reply_to_msg_id:
             userid = (await visa.get_reply_message()).sender_id
-            name = (await deadly.client.get_entity(userid)).first_name
+            name = (await visa.client.get_entity(userid)).first_name
         elif input_str:
             if input_str.isdigit():
                 try:
                     userid = input_str
-                    name = (await deadly.client.get_entity(userid)).first_name
+                    name = (await visa.client.get_entity(userid)).first_name
                 except ValueError as ve:
-                    return await deadlyevent.edit(str(ve))
+                    return await visaevent.edit(str(ve))
             else:
-                userid = (await deadly.client.get_entity(input_str)).id
-                name = (await deadly.client.get_entity(userid)).first_name
+                userid = (await visa.client.get_entity(input_str)).id
+                name = (await visa.client.get_entity(userid)).first_name
         else:
-            return await eod(deadlyevent, "I Need a user to mute!!", 5)
+            return await eod(visaevent, "I Need a user to mute!!", 5)
         if userid == official_sameer:
-            return await eod(deadlyevent, "Nashe me hai kya lawde", 5)
+            return await eod(visaevent, "Nashe me hai kya lawde", 5)
         if str(userid) in DEVLIST:
-            return await eod(deadlyevent, "**Error Muting God**", 7)
+            return await eod(visaevent, "**Error Muting God**", 7)
         try:
-            await deadly.client.edit_permissions(
+            await visa.client.edit_permissions(
                 chat.id,
                 userid,
                 until_date=None,
                 send_messages=False,
             )
             await eor(
-                deadlyevent,
+                visaevent,
                 f"**Successfully Muted**  [{name}](tg://user?id={userid}) **in**  `{chat.title}`",
             )
         except BaseException as be:
-            await eor(deadlyevent, f"`{str(be)}`")
-        await deadly.client.send_message(
+            await eor(visaevent, f"`{str(be)}`")
+        await visa.client.send_message(
             lg_id,
             "#MUTE\n"
             f"\nUSER:  [{name}](tg://user?id={userid})\n"
@@ -373,7 +373,7 @@ async def muth(visa):
         )
         
         
-@bot.on(deadly_cmd(pattern=r"unmute ?(.*)"))
+@bot.on(visa_cmd(pattern=r"unmute ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"unmute ?(.*)", allow_sudo=True))
 async def nomuth(evn):
     if evn.is_private:
@@ -393,7 +393,7 @@ async def nomuth(evn):
                 "Abb boll bsdk."
             )
     else:
-        deadlyevent = await eor(evn, "`Unmuting...`")
+        visaevent = await eor(evn, "`Unmuting...`")
         input_str = evn.pattern_match.group(1)
         chat = await evn.get_chat()
         if evn.reply_to_msg_id:
@@ -405,12 +405,12 @@ async def nomuth(evn):
                     userid = input_str
                     name = (await evn.client.get_entity(userid)).first_name
                 except ValueError as ve:
-                    return await deadlyevent.edit(str(ve))
+                    return await visaevent.edit(str(ve))
             else:
                 userid = (await evn.client.get_entity(input_str)).id
                 name = (await evn.client.get_entity(userid)).first_name
         else:
-            return await eod(deadlyevent, "I need a user to unmute!!", 3)
+            return await eod(visaevent, "I need a user to unmute!!", 3)
         try:
             await evn.client.edit_permissions(
                 chat.id,
@@ -419,11 +419,11 @@ async def nomuth(evn):
                 send_messages=True,
             )
             await eor(
-                deadlyevent,
+                visaevent,
                 f"**Successfully Unmuted**  [{name}](tg://user?id={userid}) **in**  `{chat.title}`",
             )
         except BaseException as be:
-            await eor(deadlyevent, f"`{str(be)}`")
+            await eor(visaevent, f"`{str(be)}`")
         await evn.client.send_message(
             lg_id,
             "#UNMUTE\n"
@@ -432,13 +432,13 @@ async def nomuth(evn):
         )
 
 
-@bot.on(deadly_cmd(pattern="ban(?: |$)(.*)"))
+@bot.on(visa_cmd(pattern="ban(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="ban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def ban(bon):
     if bon.fwd_from:
         return
-    deadlyevent = await eor(bon, "`Banning Nigga...`")
+    visaevent = await eor(bon, "`Banning Nigga...`")
     chat = await bon.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -447,25 +447,25 @@ async def ban(bon):
         return
     user, reason = await get_user_from_event(bon)
     if not user:
-        return await deadlyevent.edit("`Reply to a user or give username!!`")
+        return await visaevent.edit("`Reply to a user or give username!!`")
     if str(user.id) in DEVLIST:
-        return await deadlyevent.edit("**Say again? Ban my creator??**")
+        return await visaevent.edit("**Say again? Ban my creator??**")
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
-        await deadlyevent.edit(NO_PERM)
+        await visaevent.edit(NO_PERM)
         return
     try:
         reply = await bon.get_reply_message()
         if reply:
             await reply.delete()
     except BadRequestError:
-        await deadlyevent.edit(f"**Banned  [{user.first_name}](tg://user?id={user.id})  in** `[{bon.chat.title}]` !!\n\nMessage Nuking : **False**")
+        await visaevent.edit(f"**Banned  [{user.first_name}](tg://user?id={user.id})  in** `[{bon.chat.title}]` !!\n\nMessage Nuking : **False**")
         return
     if reason:
-        await deadlyevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{bon.chat.title}]` !!\n**Reason :** `{reason}`")
+        await visaevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{bon.chat.title}]` !!\n**Reason :** `{reason}`")
     else:
-        await deadlyevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{bon.chat.title}]`!!")
+        await visaevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{bon.chat.title}]`!!")
     await bon.client.send_message(
         lg_id,
         "#BAN\n"
@@ -474,7 +474,7 @@ async def ban(bon):
     )
 
 
-@bot.on(deadly_cmd(pattern="unban(?: |$)(.*)"))
+@bot.on(visa_cmd(pattern="unban(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="unban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def nothanos(unbon):
@@ -486,14 +486,14 @@ async def nothanos(unbon):
     if not admin and not creator:
         await eor(unbon, NO_ADMIN)
         return
-    deadlyevent = await eor(unbon, "`Unbanning...`")
+    visaevent = await eor(unbon, "`Unbanning...`")
     user = await get_user_from_event(unbon)
     user = user[0]
     if not user:
         return
     try:
         await unbon.client(EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-        await deadlyevent.edit(f"[{user.first_name}](tg://user?id={user.id}) **Is Now Unbanned in**  `{unbon.chat.title}` !!")
+        await visaevent.edit(f"[{user.first_name}](tg://user?id={user.id}) **Is Now Unbanned in**  `{unbon.chat.title}` !!")
         await unbon.client.send_message(
             lg_id,
             "#UNBAN\n"
@@ -501,10 +501,10 @@ async def nothanos(unbon):
             f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)",
         )
     except UserIdInvalidError:
-        await deadlyevent.edit("Invalid UserId!! Please Recheck it!!")
+        await visaevent.edit("Invalid UserId!! Please Recheck it!!")
 
 
-@bot.on(deadly_cmd(pattern="pin($| (.*))"))
+@bot.on(visa_cmd(pattern="pin($| (.*))"))
 @bot.on(sudo_cmd(pattern="pin($| (.*))", allow_sudo=True))
 @errors_handler
 async def pin(msg):
@@ -546,7 +546,7 @@ async def pin(msg):
         pass
 
 
-@bot.on(deadly_cmd(pattern="kick(?: |$)(.*)"))
+@bot.on(visa_cmd(pattern="kick(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="kick(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def kick(usr):
@@ -563,19 +563,19 @@ async def kick(usr):
         return await eor(usr, "`Couldn't fetch user info...`")
     if str(user.id) in DEVLIST:
         return await eor(usr, "**Turn back, Go straight and fuck off!!**")
-    deadlyevent = await eor(usr, "`Kicking...`")
+    visaevent = await eor(usr, "`Kicking...`")
     try:
         await usr.client.kick_participant(usr.chat_id, user.id)
         await sleep(0.5)
     except Exception as e:
-        await deadlyevent.edit(NO_PERM + f"\n`{str(e)}`")
+        await visaevent.edit(NO_PERM + f"\n`{str(e)}`")
         return
     if reason:
-        await deadlyevent.edit(
+        await visaevent.edit(
             f"**🏃 Kicked**  [{user.first_name}](tg://user?id={user.id})'s **Butt from** `{usr.chat.title}!`\nReason: `{reason}`"
         )
     else:
-        await deadlyevent.edit(f"**🏃 Kicked**  [{user.first_name}](tg://user?id={user.id})'s **Butt from** `{usr.chat.title}!`")
+        await visaevent.edit(f"**🏃 Kicked**  [{user.first_name}](tg://user?id={user.id})'s **Butt from** `{usr.chat.title}!`")
     await usr.client.send_message(
         lg_id,
         "#KICK\n"
@@ -584,7 +584,7 @@ async def kick(usr):
     )
 
 
-@bot.on(deadly_cmd(pattern=f"zombies ?(.*)"))
+@bot.on(visa_cmd(pattern=f"zombies ?(.*)"))
 @bot.on(sudo_cmd(pattern=f"zombies ?(.*)", allow_sudo=True))
 async def rm_deletedacc(show):
     if show.fwd_from:
@@ -639,7 +639,7 @@ async def rm_deletedacc(show):
     )
 
 
-@bot.on(deadly_cmd(pattern="undlt$"))
+@bot.on(visa_cmd(pattern="undlt$"))
 @bot.on(sudo_cmd(pattern="undlt$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
