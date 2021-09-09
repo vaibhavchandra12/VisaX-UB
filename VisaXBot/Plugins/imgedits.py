@@ -10,7 +10,7 @@ if not os.path.isdir("./VisaXBot/"):
     os.makedirs("./VisaXBot/")
 
 
-@bot.on(deadly_cmd(pattern=r"feye$"))
+@bot.on(visa_cmd(pattern=r"feye$"))
 @bot.on(sudo_cmd(pattern=r"feye$", allow_sudo=True))
 async def fun(event):
     if event.fwd_from:
@@ -41,7 +41,7 @@ async def fun(event):
     hoi = await event.delete()
 
 
-@bot.on(deadly_cmd(pattern=r"warp$"))
+@bot.on(visa_cmd(pattern=r"warp$"))
 @bot.on(sudo_cmd(pattern=r"warp$", allow_sudo=True))
 async def fun(event):
     if event.fwd_from:
@@ -73,7 +73,7 @@ async def fun(event):
 
 
 
-@bot.on(deadly_cmd(pattern=r"distort$"))
+@bot.on(visa_cmd(pattern=r"distort$"))
 @bot.on(sudo_cmd(pattern=r"distort$", allow_sudo=True))
 async def fun(event):
     if event.fwd_from:
