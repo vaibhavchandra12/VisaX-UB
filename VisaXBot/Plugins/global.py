@@ -7,10 +7,10 @@ from VisaXBot.sql import gmute_sql as gsql
 from . import *
 
 
-@bot.on(deadly_cmd(pattern=r"gban ?(.*)"))
+@bot.on(visa_cmd(pattern=r"gban ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"gban ?(.*)", allow_sudo=True))
 async def _(event):
-    deadly = await eor(event, "`Gbanning...`")
+    visa = await eor(event, "`Gbanning...`")
     reason = ""
     if event.reply_to_msg_id:
         userid = (await event.get_reply_message()).sender_id
@@ -32,16 +32,16 @@ async def _(event):
         except IndexError:
             reason = ""
     else:
-        return await eod(deadly, "**To gban a user i need a userid or reply to his/her message!!**")
+        return await eod(visa, "**To gban a user i need a userid or reply to his/her message!!**")
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if userid == official_sameer:
-        return await eod(deadly, "🥴 **Nashe me hai kya lawde ‽**")
+        return await eod(visa, "🥴 **Nashe me hai kya lawde ‽**")
     if str(userid) in DEVLIST:
-        return await eod(deadly, "😑 **GBan my creator ?¿ Really‽**")
+        return await eod(visa, "😑 **GBan my creator ?¿ Really‽**")
     if is_gbanned(userid):
         return await eod(
-            deadly,
+            visa,
             "This kid is already gbanned and added to my **Gban Watch!!**",
         )
     async for gfuck in event.client.iter_dialogs():
@@ -52,22 +52,22 @@ async def _(event):
             except BaseException:
                 pass
     gbaner(userid)
-    gmsg = f"🥴 [{name}](tg://user?id={userid}) **beta majdur ko khodna 😪 aur** {deadly_mention} **ko chodna... Kabhi sikhana nhi!! 😏**\n\n📍 Added to Gban Watch!!\n**🔰 Total Chats :**  `{chats}`"
+    gmsg = f"🥴 [{name}](tg://user?id={userid}) **beta majdur ko khodna 😪 aur** {visa_mention} **ko chodna... Kabhi sikhana nhi!! 😏**\n\n📍 Added to Gban Watch!!\n**🔰 Total Chats :**  `{chats}`"
     if reason != "":
         gmsg += f"\n**🔰 Reason :**  `{reason}`"
-    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {deadly_mention} **in**  `{chats}`  **Chats!! 😏**\n\n**📍 Also Added to Gban Watch!!**"
+    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {visa_mention} **in**  `{chats}`  **Chats!! 😏**\n\n**📍 Also Added to Gban Watch!!**"
     if reason != "":
         ogmsg += f"\n**🔰 Reason :**  `{reason}`"
     if Config.ABUSE == "ON":
         await bot.send_file(event.chat_id, cjb, caption=gmsg)
     else:
-        await deadly.edit(ogmsg)
+        await visa.edit(ogmsg)
 
 
-@bot.on(deadly_cmd(pattern=r"ungban ?(.*)"))
+@bot.on(visa_cmd(pattern=r"ungban ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"ungban ?(.*)", allow_sudo=True))
 async def _(event):
-    deadly = await eor(event, "`Ungban in progress...`")
+    visa = await eor(event, "`Ungban in progress...`")
     if event.reply_to_msg_id:
         userid = (await event.get_reply_message()).sender_id
     elif event.pattern_match.group(1):
@@ -75,11 +75,11 @@ async def _(event):
     elif event.is_private:
         userid = (await event.get_chat()).id
     else:
-        return await eod(deadly, "`Reply to a user or give their userid... `")
+        return await eod(visa, "`Reply to a user or give their userid... `")
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if not is_gbanned(userid):
-        return await eod(deadly, "`User is not gbanned.`")
+        return await eod(visa, "`User is not gbanned.`")
     async for gfuck in event.client.iter_dialogs():
         if gfuck.is_group or gfuck.is_channel:
             try:
@@ -88,12 +88,12 @@ async def _(event):
             except BaseException:
                 pass
     ungbaner(userid)
-    await deadly.edit(
+    await visa.edit(
         f"📍 [{name}](tg://user?id={userid}) **is now Ungbanned from `{chats}` chats and removed from Gban Watch!!**",
     )
 
 
-@bot.on(deadly_cmd(pattern="listgban$"))
+@bot.on(visa_cmd(pattern="listgban$"))
 @bot.on(sudo_cmd(pattern="listgban$", allow_sudo=True))
 async def already(event):
     gbanned_users = all_gbanned()
@@ -127,10 +127,10 @@ async def _(event):
                     pass
 
 
-@bot.on(deadly_cmd(pattern=r"gkick ?(.*)"))
+@bot.on(visa_cmd(pattern=r"gkick ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"gkick ?(.*)", allow_sudo=True))
 async def gkick(event):
-    deadly = await eor(event, "`Kicking globally...`")
+    visa = await eor(event, "`Kicking globally...`")
     if event.reply_to_msg_id:
         userid = (await event.get_reply_message()).sender_id
     elif event.pattern_match.group(1):
@@ -138,13 +138,13 @@ async def gkick(event):
     elif event.is_private:
         userid = (await event.get_chat()).id
     else:
-        return await eod(deadly, "`Reply to some msg or add their id.`")
+        return await eod(visa, "`Reply to some msg or add their id.`")
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if userid == official_sameer:
-        return await eod(deadly, "**🥴 Nashe me hai kya lawde!!**")
+        return await eod(visa, "**🥴 Nashe me hai kya lawde!!**")
     if str(userid) in DEVLIST:
-        return await eod(deadly, "**😪 I'm not going to gkick my developer!!**")
+        return await eod(visa, "**😪 I'm not going to gkick my developer!!**")
     async for gkick in event.client.iter_dialogs():
         if gkick.is_group or gkick.is_channel:
             try:
@@ -156,10 +156,10 @@ async def gkick(event):
     if Config.ABUSE == "ON":
         await bot.send_file(event.chat_id, cjb, caption=gkmsg)
     else:
-        await deadly.edit(gkmsg)
+        await visa.edit(gkmsg)
 
 
-@bot.on(deadly_cmd(pattern=r"gmute ?(\d+)?"))
+@bot.on(visa_cmd(pattern=r"gmute ?(\d+)?"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern=r"gmute ?(\d+)?"))
 async def gm(event):
     private = False
@@ -196,7 +196,7 @@ async def gm(event):
         
 
 
-@bot.on(deadly_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
+@bot.on(visa_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern=r"ungmute ?(\d+)?"))
 async def endgmute(event):
     private = False
@@ -283,7 +283,7 @@ async def get_full_user(event):
         try:
             user_obj = await event.client.get_entity(user)
         except Exception as err:
-            return await event.edit("Error... Please report at @DEADLY_USERBOT", str(err))           
+            return await event.edit("Error... Please report at @VISA_SUPPORT", str(err))           
     return user_obj, extra
 
 global hawk,moth
@@ -298,13 +298,13 @@ async def get_user_from_id(user, event):
         await event.edit(str(err))
         return None
     return user_obj
-@borg.on(deadly_cmd(pattern="gpromote ?(.*)"))
+@borg.on(visa_cmd(pattern="gpromote ?(.*)"))
 async def gben(userbot):
-    mb = deadly = userbot
+    mb = visa = userbot
     i = 0
     sender = await mb.get_sender()
     me = await userbot.client.get_me()
-    await deadly.edit("`promoting...`")
+    await visa.edit("`promoting...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await userbot.get_chat()
@@ -318,13 +318,13 @@ async def gben(userbot):
     except:
         pass
     if me == user:
-       k = await deadly.edit("U want to promote urself 😑😑 waao..")
+       k = await visa.edit("U want to promote urself 😑😑 waao..")
        return
     try:
         if not rank:
             rank = "ㅤㅤ"
     except:
-        return await deadly.edit(f"**Something W3NT Wrong 🤔**")
+        return await visa.edit(f"**Something W3NT Wrong 🤔**")
     if user:
         telchanel = [d.entity.id
                      for d in await userbot.client.get_dialogs()
@@ -341,21 +341,21 @@ async def gben(userbot):
           try:
              await userbot.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
-             await deadly.edit(f"**Promoted in Chats **: `{i}`")
+             await visa.edit(f"**Promoted in Chats **: `{i}`")
           except:
              pass
     else:
-        await deadly.edit(f"**Reply to a user you dumbo !!**")
-    return await deadly.edit(
+        await visa.edit(f"**Reply to a user you dumbo !!**")
+    return await visa.edit(
         f"**Globally promoted [{user.first_name}](tg://user?id={user.id})\n On Chats😏 : {i} **"
     )
-@borg.on(deadly_cmd(pattern="gpromote1 ?(.*)"))
+@borg.on(visa_cmd(pattern="gpromote1 ?(.*)"))
 async def gben(userbot):
-    mb = deadly = userbot
+    mb = visa = userbot
     i = 0
     sender = await mb.get_sender()
     me = await userbot.client.get_me()
-    await deadly.edit("`promoting...`")
+    await visa.edit("`promoting...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await userbot.get_chat()
@@ -369,13 +369,13 @@ async def gben(userbot):
     except:
         pass
     if me == user:
-       k = await deadly.edit("U want to promote urself 😑😑 waao..")
+       k = await visa.edit("U want to promote urself 😑😑 waao..")
        return
     try:
         if not rank:
             rank = "ㅤㅤ"
     except:
-        return await deadly.edit(f"**Something W3NT Wrong 🤔**")
+        return await visa.edit(f"**Something W3NT Wrong 🤔**")
     if user:
         telchanel = [d.entity.id
                      for d in await userbot.client.get_dialogs()
@@ -392,21 +392,21 @@ async def gben(userbot):
           try:
              await userbot.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
-             await deadly.edit(f"**Promoted in Chats **: `{i}`")
+             await visa.edit(f"**Promoted in Chats **: `{i}`")
           except:
              pass
     else:
-        await deadly.edit(f"**Reply to a user you dumbo !!**")
-    return await deadly.edit(
+        await visa.edit(f"**Reply to a user you dumbo !!**")
+    return await visa.edit(
         f"**Globally promoted [{user.first_name}](tg://user?id={user.id})\n On Chats😏 : {i} **"
     )
-@borg.on(deadly_cmd(pattern="gpromote2 ?(.*)"))
+@borg.on(visa_cmd(pattern="gpromote2 ?(.*)"))
 async def gben(userbot):
-    mb = deadly = userbot
+    mb = visa = userbot
     i = 0
     sender = await mb.get_sender()
     me = await userbot.client.get_me()
-    await deadly.edit("`promoting...`")
+    await visa.edit("`promoting...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await userbot.get_chat()
@@ -420,13 +420,13 @@ async def gben(userbot):
     except:
         pass
     if me == user:
-       k = await deadly.edit("U want to promote urself 😑😑 waao..")
+       k = await visa.edit("U want to promote urself 😑😑 waao..")
        return
     try:
         if not rank:
             rank = "ㅤㅤ"
     except:
-        return await deadly.edit(f"**Something W3NT Wrong 🤔**")
+        return await visa.edit(f"**Something W3NT Wrong 🤔**")
     if user:
         telchanel = [d.entity.id
                      for d in await userbot.client.get_dialogs()
@@ -443,21 +443,21 @@ async def gben(userbot):
           try:
              await userbot.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
-             await deadly.edit(f"**Promoted in Chats **: `{i}`")
+             await visa.edit(f"**Promoted in Chats **: `{i}`")
           except:
              pass
     else:
-        await deadly.edit(f"**Reply to a user you dumbo !!**")
-    return await deadly.edit(
+        await visa.edit(f"**Reply to a user you dumbo !!**")
+    return await visa.edit(
         f"**Globally promoted [{user.first_name}](tg://user?id={user.id})\n On Chats😏 : {i} **"
     )
-@borg.on(deadly_cmd(pattern="gpromote3 ?(.*)"))
+@borg.on(visa_cmd(pattern="gpromote3 ?(.*)"))
 async def gben(userbot):
-    mb = deadly = userbot
+    mb = visa = userbot
     i = 0
     sender = await mb.get_sender()
     me = await userbot.client.get_me()
-    await deadly.edit("`promoting...`")
+    await visa.edit("`promoting...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await userbot.get_chat()
@@ -471,13 +471,13 @@ async def gben(userbot):
     except:
         pass
     if me == user:
-       k = await deadly.edit("U want to promote urself 😑😑 waao..")
+       k = await visa.edit("U want to promote urself 😑😑 waao..")
        return
     try:
         if not rank:
             rank = "ㅤㅤ"
     except:
-        return await deadly.edit(f"**Something W3NT Wrong 🤔**")
+        return await visa.edit(f"**Something W3NT Wrong 🤔**")
     if user:
         telchanel = [d.entity.id
                      for d in await userbot.client.get_dialogs()
@@ -494,21 +494,21 @@ async def gben(userbot):
           try:
              await userbot.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
-             await deadly.edit(f"**Promoted in Chats **: `{i}`")
+             await visa.edit(f"**Promoted in Chats **: `{i}`")
           except:
              pass
     else:
-        await deadly.edit(f"**Reply to a user you dumbo !!**")
-    return await deadly.edit(
+        await visa.edit(f"**Reply to a user you dumbo !!**")
+    return await visa.edit(
         f"**Globally promoted [{user.first_name}](tg://user?id={user.id})\n On Chats😏 : {i} **"
     )
 @borg.on(admin_cmd(pattern="gdemote ?(.*)"))
 async def gben(userbot):
-    mb = deadly = userbot
+    mb = visa = userbot
     i = 0
     sender = await mb.get_sender()
     me = await userbot.client.get_me()
-    await deadly.edit("`demoting...`")
+    await visa.edit("`demoting...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await userbot.get_chat()
@@ -522,13 +522,13 @@ async def gben(userbot):
     except:
         pass
     if me == user:
-       k = await deadly.edit("U want to demote urself 😑😑 waao..")
+       k = await visa.edit("U want to demote urself 😑😑 waao..")
        return
     try:
         if not rank:
             rank = "ㅤㅤ"
     except:
-        return await deadly.edit(f"**Something W3NT Wrong 🤔**")
+        return await visa.edit(f"**Something W3NT Wrong 🤔**")
     if user:
         telchanel = [d.entity.id
                      for d in await userbot.client.get_dialogs()
@@ -544,12 +544,12 @@ async def gben(userbot):
           try:
              await userbot.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
-             await deadly.edit(f"**Demoted in Chats **: `{i}`")
+             await visa.edit(f"**Demoted in Chats **: `{i}`")
           except:
              pass
     else:
-        await deadly.edit(f"**Reply to a user you dumbo !!**")
-    return await deadly.edit(
+        await visa.edit(f"**Reply to a user you dumbo !!**")
+    return await visa.edit(
         f"**Globally Demoted [{user.first_name}](tg://user?id={user.id})\n On Chats😏 : {i} **"
     )
 
