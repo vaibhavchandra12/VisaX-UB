@@ -59,7 +59,7 @@ async def print_changelogs(event, ac_br, changelog):
             event.chat_id,
             "output.txt",
             reply_to=event.id,
-            thumb=deadly_logo,
+            thumb=visa_logo,
         )
         os.remove("output.txt")
     else:
@@ -74,7 +74,7 @@ async def print_changelogs(event, ac_br, changelog):
 async def update_requirements():
     reqs = str(requirements_path)
     try:
-        process = await asyncio.create_subprocess_sdeadly(
+        process = await asyncio.create_subprocess_svisa(
             " ".join([sys.executable, "-m", "pip", "install", "-r", reqs]),
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
@@ -99,7 +99,7 @@ async def update(event, repo, ups_rem, ac_br):
     return
 
 
-@bot.on(deadly_cmd(outgoing=True, pattern=r"update(| now)$"))
+@bot.on(visa_cmd(outgoing=True, pattern=r"update(| now)$"))
 @bot.on(sudo_cmd(pattern="update(| now)$", allow_sudo=True))
 async def upstream(event):
     conf = event.pattern_match.group(1).strip()
@@ -150,9 +150,9 @@ async def upstream(event):
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     if changelog == "" and not force_update:
         await event.edit(
-            "\n**😎 ∂єα∂ℓу кααℓ Bσт is UP-TO-DATE.**"
-            f"\n\n**Version :**  {deadly_ver}"
-            f"\n**Owner :**  {deadly_mention}"
+            "\n**😎 ʋɨֆǟ-Ӽ ɮօȶ is UP-TO-DATE.**"
+            f"\n\n**Version :**  {visa_ver}"
+            f"\n**Owner :**  {visa_mention}"
             f"\n**Git Branch :**  {UPSTREAM_REPO_BRANCH}\n"
         )
         return repo.__del__()
@@ -163,7 +163,7 @@ async def upstream(event):
 
     if force_update:
         await event.edit(
-            "`Force-Updating ∂єα∂ℓу кααℓ Bσт. Please wait...`"
+            "`Force-Updating ʋɨֆǟ-Ӽ ɮօȶ. Please wait...`"
         )
     if conf == "now":
         await event.edit("`Update In Progress! Please Wait....`")
@@ -216,21 +216,21 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             )
             await asyncio.sleep(5)
             return await event.delete()
-        await event.edit(f"**Your ∂єα∂ℓу кααℓ Bσт Is UpToDate**\n\n**Version :**  __{deadly_ver}__\n**Oɯɳҽɾ :**  {deadly_mention}")
+        await event.edit(f"**Your ʋɨֆǟ-Ӽ ɮօȶ Is UpToDate**\n\n**Version :**  __{visa_ver}__\n**Oɯɳҽɾ :**  {visa_mention}")
     else:
         await event.edit("**Please set up**  `HEROKU_API_KEY`  **from heroku to update!**")
     return
 
 
-@bot.on(deadly_cmd(outgoing=True, pattern=r"update build$"))
+@bot.on(visa_cmd(outgoing=True, pattern=r"update build$"))
 @bot.on(sudo_cmd(pattern="update build$", allow_sudo=True))
 async def upstream(event):
     event = await edit_or_reply(event, "`Hard-Update In Progress... \nPlease wait until docker build is finished...`")
     off_repo = "https://github.com/TEAM-MISAKA/MISAKA-BOT"
     os.chdir("/app")
-    git_deadly = f"rm -rf .git"
+    git_visa = f"rm -rf .git"
     try:
-        await runner.runcmd(git_deadly)
+        await runner.runcmd(git_visa)
     except BaseException:
         pass
     try:
