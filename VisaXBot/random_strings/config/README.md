@@ -1,3 +1,3 @@
 # VisaXBot Original Configs are imported from here.
 
-# All configs can be found in [deadly_config.py](https://github.com/TheVaders/InVade/blob/master/deadly_config.py) in root dir
+# All configs can be found in [VisaX_config.py](https://github.com/callmevp/VisaX-UB/blob/master/visax_config.py) in root dir
