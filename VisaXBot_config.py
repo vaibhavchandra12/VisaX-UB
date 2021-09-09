@@ -9,7 +9,7 @@ class Config(object):
     LOGGER = True
     ABUSE = os.environ.get("ABUSE", None)
     ALIVE_MSG = os.environ.get("ALIVE_MSG", "༺ ʟɛɢɛռɖǟʀʏ ǟʄ ʋɨֆǟӼ ɮօȶ")
-    ALIVE_PIC = os.environ.get("ALIVE_PIC", "https://telegra.ph/file/22604038d2a21ab10a6cb.jpg")
+    ALIVE_PIC = os.environ.get("ALIVE_PIC", "https://telegra.ph/file/9450e670296761f48dad0.jpg")
     ANTI_FLOOD_WARN_MODE = ChatBannedRights(
         until_date=None,
         view_messages=None,
@@ -67,8 +67,8 @@ class Config(object):
     MAX_MESSAGE_SIZE_LIMIT = 4095
     MAX_SPAM = int(os.environ.get("MAX_SPAM", 3))
     MONGO_URI = os.environ.get("MONGO_URI", None)
-    MY_CHANNEL = os.environ.get("YOUR_CHANNEL", "VISAX_OP_BOT")
-    MY_GROUP = os.environ.get("YOUR_GROUP", "deadly_kaal_support")
+    MY_CHANNEL = os.environ.get("YOUR_CHANNEL", "VISA_update")
+    MY_GROUP = os.environ.get("YOUR_GROUP", "Visa_support")
     OCR_API = os.environ.get("OCR_API", None)
     PLUGIN_CHANNEL = os.environ.get("PLUGIN_CHANNEL", None)
     if PLUGIN_CHANNEL:
@@ -77,11 +77,11 @@ class Config(object):
     if PM_LOG_ID:
         PM_LOG_ID = int(PM_LOG_ID)
     PM_PERMIT = os.environ.get("PM_PERMIT", "ENABLE")
-    PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", "https://telegra.ph/file/73e95f4325159336766c0.jpg")
+    PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", "https://telegra.ph/file/cc082828d690d2410289f.jpg")
     REMOVE_BG_API = os.environ.get("REMOVE_BG_API", None)
     SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get("SCREEN_SHOT_LAYER_ACCESS_KEY", None)
     STICKER_PACKNAME = os.environ.get("STICKER_PACKNAME", None)
-    VISAX_SESSION = os.environ.get("VISAX_SESSION", None)
+    VISA_X_SESSION = os.environ.get("VISA_X_SESSION", None)
     SUDO_HANDLER = os.environ.get("SUDO_HANDLER", r"\.")
     SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "").split())
     TAG_LOGGER = os.environ.get("TAG_LOGGER", None)
@@ -91,7 +91,7 @@ class Config(object):
     TEMP_DIR = os.environ.get("TEMP_DIR", None)
     TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
     TZ = os.environ.get("TZ", "Asia/Kolkata")
-    UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO", "https://github.com/CallMeVp/VisaXBot")
+    UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO", "https://github.com/callmevp/VisaXBot")
     WEATHER_API = os.environ.get("WEATHER_API", None)
     YOUR_NAME = os.environ.get("YOUR_NAME", None)
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
