@@ -8,7 +8,7 @@ from . import *
 
 GIT_TEMP_DIR = "./userbot/temp/"
 
-@bot.on(deadly_cmd(pattern=r"commit"))
+@bot.on(visa_cmd(pattern=r"commit"))
 @bot.on(sudo_cmd(pattern=r"commit"))
 async def download(event):
     if event.fwd_from:
@@ -19,7 +19,7 @@ async def download(event):
     if Config.GIT_REPO_NAME is None:
         await eod(event, "`Please ADD Proper Github Repo Name of HellBot`")
         return
-    deadlybot = await eor(event, "Processing ...")
+    visaxbot = await eor(event, "Processing ...")
     if not os.path.isdir(GIT_TEMP_DIR):
         os.makedirs(GIT_TEMP_DIR)
     start = datetime.now()
@@ -31,12 +31,12 @@ async def download(event):
             reply_message.media, GIT_TEMP_DIR
         )
     except Exception as e:
-        await eod(deadlybot, str(e))
+        await eod(visaxbot, str(e))
     else:
         end = datetime.now()
         ms = (end - start).seconds
         await event.delete()
-        await deadlybot.edit(
+        await visaxbot.edit(
             "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
         )
         await hellbot.edit("Committing to Github....")
@@ -59,9 +59,9 @@ async def git_commit(file_name, mikasabot):
     for i in content_list:
         create_file = True
         if i == 'ContentFile(path="' + file_name + '")':
-            return await deadlybot.edit("`File Already Exists`")
+            return await visaxbot.edit("`File Already Exists`")
             create_file = False
-    file_name = "Deadlybot/plugins/" + file_name
+    file_name = "VisaXbot/plugins/" + file_name
     if create_file == True:
         file_name = file_name.replace("./userbot/temp/", "")
         print(file_name)
@@ -72,17 +72,17 @@ async def git_commit(file_name, mikasabot):
             print("Committed File")
             ccess = Config.GIT_REPO_NAME
             ccess = ccess.strip()
-            await deadlybot.edit(
+            await visaxbot.edit(
                 f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)"
             )
         except:
             print("Cannot Create Plugin")
-            await eod(deadlybot, "Cannot Upload Plugin")
+            await eod(visaxbot, "Cannot Upload Plugin")
     else:
-        return await eod(deadlybot, "`Committed Suicide`")
+        return await eod(visaxbot, "`Committed Suicide`")
 
 
-@bot.on(deadly_cmd(pattern="github (.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="github (.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="github (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
