@@ -6,7 +6,7 @@ from telegraph import Telegraph, exceptions, upload_file
 
 from . import *
 
-HELL_NAME = Config.YOUR_NAME or "∂єα∂ℓу кααℓ Bσт"
+HELL_NAME = Config.YOUR_NAME or "ʋɨֆǟ-Ӽ ɮօȶ"
 lg_id = Config.LOGGER_ID
 
 telegraph = Telegraph()
@@ -52,7 +52,7 @@ async def _(event):
                 os.remove(downloaded_file_name)
                 await eor(event, 
                    "✓ **File uploaded to [telegraph](https://telegra.ph{})** \n✓ **Time Taken :-** `{}` secs \n✓ **By :- {}**".format(
-                        media_urls[0], (ms + ms_two), deadly_mention,
+                        media_urls[0], (ms + ms_two), visa_mention,
                     ),
                     link_preview=True,
                 )
@@ -79,9 +79,9 @@ async def _(event):
             response = telegraph.create_page(title_of_page, html_content=page_content)
             end = datetime.datetime.now()
             ms = (end - start).seconds
-            deadlyboy = f"https://telegra.ph/{response['path']}"
+            visaboy = f"https://telegra.ph/{response['path']}"
             await edit_or_reply(event, 
-                  f"✓ **Pasted to** [telegraph]({deadlyboy}) \n✓ **Time Taken :-** `{ms}` secs\n✓** By :**  {deadly_mention}", link_preview=True)
+                  f"✓ **Pasted to** [telegraph]({visaboy}) \n✓ **Time Taken :-** `{ms}` secs\n✓** By :**  {visa_mention}", link_preview=True)
     else:
         await eod(event, 
             "Reply to a message to get a permanent telegra.ph link."
