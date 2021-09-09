@@ -4,7 +4,7 @@ from telethon.tl.types import ChatBannedRights
 from . import *
 
 
-@bot.on(deadly_cmd(pattern=r"lock ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern=r"lock ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"lock ?(.*)", allow_sudo=True))
 @errors_handler
 async def locks(event):
@@ -91,14 +91,14 @@ async def locks(event):
         await bot.send_file(
             event.chat_id,
             restlo,
-            caption=f"{deadly_mention} Locked `{what}` \n__Cause its Rest Time !!__",
+            caption=f"{visa_mention} Locked `{what}` \n__Cause its Rest Time !!__",
             )
     except BaseException as e:
         await eod(event, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
         return
 
 
-@bot.on(deadly_cmd(pattern="unlock ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="unlock ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="unlock ?(.*)", allow_sudo=True))
 @errors_handler
 async def rem_locks(event):
@@ -188,15 +188,15 @@ async def rem_locks(event):
             await bot.send_file(
                 event.chat_id,
                 shuru,
-                caption=f"**{deadly_mention} unlocked** `{what}`",
+                caption=f"**{visa_mention} unlocked** `{what}`",
             )
         else:
-            await eor(event, f"{deadly_mention} Unlocked `{what}` \n__Now Start Chit Chat !!__")
+            await eor(event, f"{visa_mention} Unlocked `{what}` \n__Now Start Chit Chat !!__")
     except BaseException as e:
         await eod(event, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
         return
 
-@bot.on(deadly_cmd(pattern="ltype$"))
+@bot.on(visa_cmd(pattern="ltype$"))
 @bot.on(sudo_cmd(pattern="ltype$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
