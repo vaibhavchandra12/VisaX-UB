@@ -10,7 +10,7 @@ msg = f"""
 **⚡ ℓєgєη∂αяу αƒ νιѕα-χ вσт ⚡ **
   •        [📑 Repo 📑](https://github.com/CallMeVp/VisaXBot)
   •        [🚀 Deploy 🚀](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FCallMeVp%2FVisaXBot&template=https%3A%2F%2Fgithub.com%2FCallMeVp%2FVisaXBot)
-  •  ©️ {deadly_channel} ™
+  •  ©️ {visa_channel} ™
 """
 botname = Config.BOT_USERNAME
 
