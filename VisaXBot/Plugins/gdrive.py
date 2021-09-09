@@ -31,7 +31,7 @@ async def save_response_content(response, destination):
     CHUNK_SIZE = 32768
     with open(destination, "wb") as f:
         for chunk in response.iter_content(CHUNK_SIZE):
-            if chunk:  # filter out keep-deadly new chunks
+            if chunk:  # filter out keep-visa new chunks
                 f.write(chunk)
     return destination
 
@@ -73,7 +73,7 @@ async def get_file_name(content):
     return file_name
 
 
-@bot.on(deadly_cmd(pattern=r"gdl"))
+@bot.on(visa_cmd(pattern=r"gdl"))
 @bot.on(sudo_cmd(pattern=r"gdl", allow_sudo=True))
 async def g_download(event):
     if event.fwd_from:
