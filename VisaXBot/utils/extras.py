@@ -80,13 +80,13 @@ async def edit_or_reply(
 
 
 # delete timeout
-async def delete_deadly(event, text, time=None, parse_mode=None, link_preview=None):
+async def delete_visa(event, text, time=None, parse_mode=None, link_preview=None):
     parse_mode = parse_mode or "md"
     link_preview = link_preview or False
     time = time or 10
     if event.sender_id in Config.SUDO_USERS:
         reply_to = await event.get_reply_message()
-        deadlyevent = (
+        visaevent = (
             await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
             if reply_to
             else await event.reply(
@@ -94,10 +94,10 @@ async def delete_deadly(event, text, time=None, parse_mode=None, link_preview=No
             )
         )
     else:
-        deadlyevent = await event.edit(
+        visaevent = await event.edit(
             text, link_preview=link_preview, parse_mode=parse_mode
         )
     await asyncio.sleep(time)
-    return await deadlyevent.delete()
+    return await visaevent.delete()
 
 # VisaXBot
