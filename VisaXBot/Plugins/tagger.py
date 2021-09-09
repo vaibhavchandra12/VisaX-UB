@@ -42,7 +42,7 @@ if Config.TAG_LOGGER:
             return
 
 
-@bot.on(deadly_cmd(pattern=r"tagall (.*)", outgoing=True))
+@bot.on(visa_cmd(pattern=r"tagall (.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"tagall (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
