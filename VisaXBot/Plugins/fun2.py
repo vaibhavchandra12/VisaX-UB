@@ -13,7 +13,7 @@ BASE_URL = "https://headp.at/pats/{}"
 PAT_IMAGE = "pat.jpg"
 
 
-@bot.on(deadly_cmd(pattern="pat ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="pat ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="pat ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -36,7 +36,7 @@ async def _(event):
     remove(PAT_IMAGE)
 
 
-@bot.on(deadly_cmd(pattern="join$", outgoing=True))
+@bot.on(visa_cmd(pattern="join$", outgoing=True))
 @bot.on(sudo_cmd(pattern="join$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -53,7 +53,7 @@ async def _(event):
         await eor(event, mentions)
 
 
-@bot.on(deadly_cmd(pattern="pay$", outgoing=True))
+@bot.on(visa_cmd(pattern="pay$", outgoing=True))
 @bot.on(sudo_cmd(pattern="pay$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -70,7 +70,7 @@ async def _(event):
         await eor(event, mentions)
   
 
-@bot.on(deadly_cmd(pattern="climb$", outgoing=True))
+@bot.on(visa_cmd(pattern="climb$", outgoing=True))
 @bot.on(sudo_cmd(pattern="climb$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -87,7 +87,7 @@ async def _(event):
         await eor(event, mentions)
   
 
-@bot.on(deadly_cmd(pattern="aag$", outgoing=True))
+@bot.on(visa_cmd(pattern="aag$", outgoing=True))
 @bot.on(sudo_cmd(pattern="aag$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -104,7 +104,7 @@ async def _(event):
         await eor(event, mentions)
     
 
-@bot.on(deadly_cmd(pattern="push$", outgoing=True))
+@bot.on(visa_cmd(pattern="push$", outgoing=True))
 @bot.on(sudo_cmd(pattern="push$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -121,7 +121,7 @@ async def _(event):
         await eor(event, mentions)
     
 
-@bot.on(deadly_cmd(pattern="work$", outgoing=True))
+@bot.on(visa_cmd(pattern="work$", outgoing=True))
 @bot.on(sudo_cmd(pattern="work$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -138,7 +138,7 @@ async def _(event):
         await eor(event, mentions)
     
 
-@bot.on(deadly_cmd(pattern="suckit$", outgoing=True))
+@bot.on(visa_cmd(pattern="suckit$", outgoing=True))
 @bot.on(sudo_cmd(pattern="suckit$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -155,7 +155,7 @@ async def _(event):
         await eor(event, mentions)
    
 
-@bot.on(deadly_cmd(pattern="ohh$", outgoing=True))
+@bot.on(visa_cmd(pattern="ohh$", outgoing=True))
 @bot.on(sudo_cmd(pattern="ohh$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -172,7 +172,7 @@ async def _(event):
         await eor(event, mentions)
   
 
-@bot.on(deadly_cmd(pattern="lovestory$", outgoing=True))
+@bot.on(visa_cmd(pattern="lovestory$", outgoing=True))
 @bot.on(sudo_cmd(pattern="lovestory$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -202,7 +202,7 @@ async def _(event):
         await event.edit(animation_chars[i % 103])
 
 
-@bot.on(deadly_cmd(pattern="bf$", outgoing=True))
+@bot.on(visa_cmd(pattern="bf$", outgoing=True))
 @bot.on(sudo_cmd(pattern="bf$", allow_sudo=True))
 async def pressf(f):
     if f.fwd_from:
@@ -228,7 +228,7 @@ async def pressf(f):
         await eor(f"`" + out + "`")
 
 
-@bot.on(deadly_cmd(pattern="session$", outgoing=True))
+@bot.on(visa_cmd(pattern="session$", outgoing=True))
 @bot.on(sudo_cmd(pattern="session$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -237,7 +237,7 @@ async def _(event):
     await eor(event, mentions)
 
 
-@bot.on(deadly_cmd(pattern="ftext ?(.*)"))
+@bot.on(visa_cmd(pattern="ftext ?(.*)"))
 @bot.on(sudo_cmd(pattern="ftext ?(.*)", allow_sudo=True))
 async def payf(event):
     if event.fwd_from:
@@ -265,31 +265,31 @@ async def payf(event):
     await event.edit(pay)
 
 
-@bot.on(deadly_cmd(pattern="cat$"))
+@bot.on(visa_cmd(pattern="cat$"))
 @bot.on(sudo_cmd(pattern="cat$", allow_sudo=True))
-async def hmm(deadly):
-    if deadly.fwd_from:
+async def hmm(visa):
+    if visa.fwd_from:
         return
     reactcat = nekos.textcat()
-    await eor(deadly, reactcat)
+    await eor(visa, reactcat)
 
 
-@bot.on(deadly_cmd(pattern="why$"))
+@bot.on(visa_cmd(pattern="why$"))
 @bot.on(sudo_cmd(pattern="why$", allow_sudo=True))
-async def hmm(deadly):
-    if deadly.fwd_from:
+async def hmm(visa):
+    if visa.fwd_from:
         return
-    whydeadly = nekos.why()
-    await eor(deadly, whydeadly)
+    whyvisa = nekos.why()
+    await eor(visa, whyvisa)
 
 
-@bot.on(deadly_cmd(pattern="fact$"))
+@bot.on(visa_cmd(pattern="fact$"))
 @bot.on(sudo_cmd(pattern="fact$", allow_sudo=True))
-async def hmm(deadly):
-    if deadly.fwd_from:
+async def hmm(visa):
+    if visa.fwd_from:
         return
-    factdeadly = nekos.fact()
-    await eor(deadly, factdeadly)
+    factvisa = nekos.fact()
+    await eor(visa, factvisa)
 
 
 CmdHelp("fun2").add_command(
