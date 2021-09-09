@@ -12,16 +12,16 @@ global groupsid
 groupsid = []
 
 
-async def all_groups_id(deadly):
-    deadlygroups = []
-    async for dialog in deadly.client.iter_dialogs():
+async def all_groups_id(visa):
+    visagroups = []
+    async for dialog in visa.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, Channel) and entity.megagroup:
-            deadlygroups.append(entity.id)
-    return deadlygroups
+            visagroups.append(entity.id)
+    return visagroups
 
 
-@bot.on(deadly_cmd(pattern="frwd$"))
+@bot.on(visa_cmd(pattern="frwd$"))
 @bot.on(sudo_cmd(pattern="frwd$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -45,7 +45,7 @@ async def _(event):
         await event.delete()
 
 
-@bot.on(deadly_cmd(pattern="resend$"))
+@bot.on(visa_cmd(pattern="resend$"))
 @bot.on(sudo_cmd(pattern="resend$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -60,7 +60,7 @@ async def _(event):
     await event.respond(m)
 
 
-@bot.on(deadly_cmd(pattern=r"fpost (.*)"))
+@bot.on(visa_cmd(pattern=r"fpost (.*)"))
 @bot.on(sudo_cmd(pattern=r"fpost (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
