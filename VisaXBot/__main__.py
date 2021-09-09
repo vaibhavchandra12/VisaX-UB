@@ -12,7 +12,7 @@ from VisaXBot.config import Config
 from VisaXBot.utils import load_module
 from VisaXBot.version import __visa__ as visaver
 hl = Config.HANDLER
-VISA_PIC = Config.ALIVE_PIC or "https://telegra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
+VISA_PIC = Config.ALIVE_PIC or "https://telegra.ph/file/a03c9f49c8bcc2356fd1c.jpg"
 
 # let's get the bot ready
 async def visa_bot(bot_token):
