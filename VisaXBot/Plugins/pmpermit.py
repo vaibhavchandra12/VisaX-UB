@@ -9,19 +9,19 @@ from . import *
 from VisaXBot.sql import pmpermit_sql as pm_sql
 
 
-WARN_PIC = Config.PMPERMIT_PIC or "https://telegra.ph/file/58df4d86400922aa32acd.jpg"
+WARN_PIC = Config.PMPERMIT_PIC or "https://telegra.ph/file/80fa51f409fb07b882c78.jpg"
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 PM_ON_OFF = Config.PM_PERMIT
 CSTM_PMP = "YOU HAVE TRESPASSED TO MY MASTERS INBOX** \n THIS IS ILLEGAL AND REGARDED AS CRIME"
 HELL_ZERO = "Go get some sleep retard. \n\n**Blocked !!**"
 HELL_FIRST = (
-    "⚠️ 𝐇𝐄𝐋𝐋𝐎, 𝐓𝐇𝐈𝐒 𝐈𝐒 𝐃𝐄𝐀𝐃𝐋𝐘 𝐊𝐀𝐀𝐋 𝐁𝐎𝐓 𝐔𝐋𝐓𝐑𝐀 𝐏𝐑𝐈𝐕𝐀𝐓𝐄 𝐒𝐄𝐂𝐔𝐑𝐈𝐓𝐘 𝐏𝐑𝐎𝐓𝐎𝐂𝐎𝐋 ⚠️\n"
+    "⚠️ 𝐇𝐄𝐋𝐋𝐎, 𝐓𝐇𝐈𝐒 𝐈𝐒 𝐕𝐈𝐒𝐀-𝐗 𝐁𝐎𝐓 𝐔𝐋𝐓𝐑𝐀 𝐏𝐑𝐈𝐕𝐀𝐓𝐄 𝐒𝐄𝐂𝐔𝐑𝐈𝐓𝐘 𝐏𝐑𝐎𝐓𝐎𝐂𝐎𝐋 ⚠️\n"
     f"\n{CSTM_PMP}\n\n"
     "To start a valid conversation\n\n🔸Register Your Request!🔹\n🔸Send `/start` To Register🔹\n🔸Hopefully u will get a reply🔹"
 )
 
-@bot.on(deadly_cmd(pattern="block$"))
+@bot.on(visa_cmd(pattern="block$"))
 async def approve_p_m(event):
     if event.fwd_from:
         return
@@ -77,7 +77,7 @@ if PM_ON_OFF != "DISABLE":
             if not event.chat_id in PM_WARNS:
                 pm_sql.approve(event.chat_id, "outgoing")
                 
-    @bot.on(deadly_cmd(pattern="(a|approve|allow)$"))
+    @bot.on(visa_cmd(pattern="(a|approve|allow)$"))
     async def approve(event):
         if event.fwd_from:
             return
@@ -118,7 +118,7 @@ if PM_ON_OFF != "DISABLE":
                 await event.edit('User Already Approved !')
                 await event.delete()
 
-    @bot.on(deadly_cmd(pattern="(da|disapprove|disallow)$"))
+    @bot.on(visa_cmd(pattern="(da|disapprove|disallow)$"))
     async def dapprove(event):
         if event.fwd_from:
             return
@@ -161,7 +161,7 @@ if PM_ON_OFF != "DISABLE":
                 await event.delete()    
                 
                 
-    @bot.on(deadly_cmd(pattern="listapproved$"))
+    @bot.on(visa_cmd(pattern="listapproved$"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
