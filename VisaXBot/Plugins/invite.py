@@ -6,7 +6,7 @@ from telethon.errors import (
 from telethon.tl import functions
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.functions.messages import GetFullChatRequest
-from VisaXBot.utils import deadly_cmd, edit_or_reply, sudo_cmd
+from VisaXBot.utils import visa_cmd, edit_or_reply, sudo_cmd
 
 async def get_chatinfo(event):
     chat = event.pattern_match.group(1)
@@ -52,7 +52,7 @@ def user_full_name(user):
     return full_name
 
 
-@bot.on(deadly_cmd(pattern="inviteall ?(.*)"))
+@bot.on(visa_cmd(pattern="inviteall ?(.*)"))
 @bot.on(sudo_cmd(pattern="inviteall ?(.*)", allow_sudo=True))
 async def get_users(event):
     sender = await event.get_sender()
