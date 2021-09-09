@@ -9,14 +9,14 @@ from . import *
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 
-@bot.on(deadly_cmd(pattern="time ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="time ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="time ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     current_time = datetime.datetime.now().strftime(
         "⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡\
-        \n   DEADLYBOT TIMEZONE   \
+        \n   𝐕𝐈𝐒𝐀-𝐗 𝐁𝐎𝐓 𝐓𝐈𝐌𝐄𝐙𝐎𝐍𝐄   \
         \n   LOCATION: India🇮🇳  \
         \n   Time: %H:%M:%S  \
         \n   Date: %d.%m.%y     \
