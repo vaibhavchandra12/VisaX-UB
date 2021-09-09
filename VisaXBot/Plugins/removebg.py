@@ -27,7 +27,7 @@ def convert_tosticker(response, filename=None):
     return filename
 
 
-@bot.on(deadly_cmd(pattern="(rmbg|srmbg) ?(.*)"))
+@bot.on(visa_cmd(pattern="(rmbg|srmbg) ?(.*)"))
 @bot.on(sudo_cmd(pattern="(rmbg|srmbg) ?(.*)", allow_sudo=True))
 async def remove_background(event):
     if Config.REMOVE_BG_API is None:
@@ -40,20 +40,20 @@ async def remove_background(event):
     message_id = await reply_id(event)
     if event.reply_to_msg_id and not input_str:
         reply_message = await event.get_reply_message()
-        deadlyevent = await edit_or_reply(event, "`Analysing...`")
+        visaevent = await edit_or_reply(event, "`Analysing...`")
         file_name = os.path.join(TEMP_DIR, "rmbg.png")
         try:
             await event.client.download_media(reply_message, file_name)
         except Exception as e:
-            await edit_or_reply(deadlyevent, f"`{str(e)}`")
+            await edit_or_reply(visaevent, f"`{str(e)}`")
             return
         else:
-            await deadlyevent.edit("`Removing Background of this media`")
+            await visaevent.edit("`Removing Background of this media`")
             file_name = convert_toimage(file_name)
             response = ReTrieveFile(file_name)
             os.remove(file_name)
     elif input_str:
-        deadlyevent = await edit_or_reply(event, "`Removing Background of this media`")
+        visaevent = await edit_or_reply(event, "`Removing Background of this media`")
         response = ReTrieveURL(input_str)
     else:
         await edit_or_reply(
@@ -67,7 +67,7 @@ async def remove_background(event):
         with open("VisaXBot.png", "wb") as removed_bg_file:
             removed_bg_file.write(response.content)
     else:
-        await edit_or_reply(deadlyevent, f"`{response.content.decode('UTF-8')}`")
+        await edit_or_reply(visaevent, f"`{response.content.decode('UTF-8')}`")
         return
     if cmd == "srmbg":
         file = convert_tosticker(remove_bg_image, filename="VisaXBot.webp")
@@ -84,7 +84,7 @@ async def remove_background(event):
             force_document=True,
             reply_to=message_id,
         )
-    await deadlyevent.delete()
+    await visaevent.delete()
 
 
 # this method will call the API, and return in the appropriate format
