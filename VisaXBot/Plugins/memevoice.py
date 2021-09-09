@@ -8,11 +8,11 @@ from . import *
 # So please dont remove credit. 
 # You can use it in your repo. But dont remove these lines...
 
-@bot.on(deadly_cmd(pattern="mev(?: |$)(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="mev(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="mev(?: |$)(.*)", allow_sudo=True))
 async def nope(kraken):
-    deadly = kraken.pattern_match.group(1)
-    if not deadly:
+    visa = kraken.pattern_match.group(1)
+    if not visa:
         if kraken.is_reply:
             (await kraken.get_reply_message()).message
         else:
@@ -20,7 +20,7 @@ async def nope(kraken):
             )
             return
 
-    troll = await bot.inline_query("TrollVoiceBot", f"{(deEmojify(deadly))}")
+    troll = await bot.inline_query("TrollVoiceBot", f"{(deEmojify(visa))}")
     if troll:
         await kraken.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)
@@ -34,11 +34,11 @@ async def nope(kraken):
     else:
     	await eod(kraken, "**Error 404:**  Not Found")
     	
-@bot.on(deadly_cmd(pattern="meev(?: |$)(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="meev(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="meev(?: |$)(.*)", allow_sudo=True))
 async def nope(kraken):
-    deadly = kraken.pattern_match.group(1)
-    if not deadly:
+    visa = kraken.pattern_match.group(1)
+    if not visa:
         if kraken.is_reply:
             (await kraken.get_reply_message()).message
         else:
@@ -46,7 +46,7 @@ async def nope(kraken):
             )
             return
 
-    troll = await bot.inline_query("Myinstantsbot", f"{(deEmojify(deadly))}")
+    troll = await bot.inline_query("Myinstantsbot", f"{(deEmojify(visa))}")
     if troll:
         await kraken.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)
