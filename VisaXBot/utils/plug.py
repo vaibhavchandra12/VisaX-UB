@@ -62,10 +62,10 @@ def load_module(shortname):
         mod.VisaXBot = bot
         mod.edit_or_reply = edit_or_reply
         mod.eor = edit_or_reply
-        mod.delete_deadly = delete_deadly
-        mod.eod = delete_deadly
+        mod.delete_visa = delete_visa
+        mod.eod = delete_visa
         mod.Var = Config
-        mod.admin_cmd = deadly_cmd
+        mod.admin_cmd = visa_cmd
         # support for other userbots
         sys.modules["userbot.utils"] = VisaXBot.utils
         sys.modules["userbot"] = VisaXBot
@@ -74,7 +74,7 @@ def load_module(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["VisaXBot.plugins." + shortname] = mod
-        LOGS.info("⚡ ∂єα∂ℓу кααℓ Bσт ⚡ - Successfully Imported " + shortname)
+        LOGS.info("⚡ ʋɨֆǟ-Ӽ ɮօȶ ⚡ - Successfully Imported " + shortname)
 
 
 # remove plugins
