@@ -32,7 +32,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 
-@bot.on(deadly_cmd(pattern="recognize ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="recognize ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="recognize ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -49,7 +49,7 @@ async def _(event):
     if reply_message.sender.bot:
         await eod(event, "Reply to actual users message.")
         return
-    deadly = await eor(event, "recognizeing this media")
+    visa = await eor(event, "recognizeing this media")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -59,15 +59,15 @@ async def _(event):
             second = await response
         except YouBlockedUserError:
             await event.reply("unblock @Rekognition_Bot and try again")
-            await deadly.delete()
+            await visa.delete()
             return
         if second.text.startswith("See next message."):
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=461083923)
             )
             third = await response
-            deadly = third.message.message
-            await eor(event, deadly)
+            visa = third.message.message
+            await eor(event, visa)
             await bot.delete_messages(
             	conv.chat_id, [first.id, second.id, third.id]
             )
@@ -76,7 +76,7 @@ async def _(event):
             await eod(event, "sorry, I couldnt find it")
 
 
-@bot.on(deadly_cmd(pattern="info ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="info ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="info ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -126,7 +126,7 @@ async def _(event):
 <b>🤖 BOT</b>: {}
 <b>👥 Groups in Common</b>: {}
 
-<b>⚡ <a href='https://t.me/deadly_kaal_bot'>From DataBase of VisaXBot</a> ⚡ </b>
+<b>⚡ <a href='https://t.me/Visa_Update'>From DataBase of VisaXBot</a> ⚡ </b>
 """.format(
         user_id,
         user_id,
@@ -210,19 +210,19 @@ async def get_full_user(event):
                 return None, e
 
 
-@bot.on(deadly_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="chatinfo(?: |$)(.*)", allow_sudo=True))
 async def info(event):
     if event.fwd_from:
         return
-    deadly = await eor(event, "`Analysing the chat...`")
+    visa = await eor(event, "`Analysing the chat...`")
     chat = await get_chatinfo(event)
     caption = await fetch_info(chat, event)
     try:
-        await deadly.edit(caption, parse_mode="html")
+        await visa.edit(caption, parse_mode="html")
     except Exception as e:
         print("Exception:", e)
-        await eod(deadly, "`An unexpected error has occurred.`")
+        await eod(visa, "`An unexpected error has occurred.`")
     return
 
 
@@ -482,7 +482,7 @@ async def fetch_info(chat, event):
     return caption
 
 
-@bot.on(deadly_cmd(pattern=r"users ?(.*)", outgoing=True))
+@bot.on(visa_cmd(pattern=r"users ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"users ?(.*)", allow_sudo=True))
 async def get_users(show):
     if show.fwd_from:
@@ -531,7 +531,7 @@ async def get_users(show):
         remove("userslist.txt")
 
 
-@bot.on(deadly_cmd(pattern="admins ?(.*)"))
+@bot.on(visa_cmd(pattern="admins ?(.*)"))
 @bot.on(sudo_cmd(pattern="admins ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -584,7 +584,7 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(deadly_cmd(pattern="bots ?(.*)"))
+@bot.on(visa_cmd(pattern="bots ?(.*)"))
 @bot.on(sudo_cmd(pattern="bots ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -617,30 +617,30 @@ async def _(event):
     await event.edit(mentions)
     
     
-@bot.on(deadly_cmd(pattern="id$"))
+@bot.on(visa_cmd(pattern="id$"))
 @bot.on(sudo_cmd(pattern="id$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    deadly = await eor(event, "Fetching Ids...")
+     isa = await eor(event, "Fetching Ids...")
     if event.reply_to_msg_id:
         await event.get_input_chat()
         r_msg = await event.get_reply_message()
         if r_msg.media:
             bot_api_file_id = pack_bot_file_id(r_msg.media)
-            await deadly.edit(
+            await visa.edit(
                 "🔸 **Current Chat ID:** `{}`\n\n🔰 **From User ID:** `{}`\n\n🤖 **Bot API File ID:** `{}`".format(
                     str(event.chat_id), str(r_msg.sender_id), bot_api_file_id
                 )
             )
         else:
-            await deadly.edit(
+            await visa.edit(
                 "🔸 **Current Chat ID:** `{}`\n\n🔰 **From User ID:** `{}`".format(
                     str(event.chat_id), str(r_msg.sender_id)
                 )
             )
     else:
-        await deadly.edit("🔸 **Current Chat ID:** `{}`".format(str(event.chat_id)))
+        await visa.edit("🔸 **Current Chat ID:** `{}`".format(str(event.chat_id)))
 
 
 CmdHelp("infos").add_command(
