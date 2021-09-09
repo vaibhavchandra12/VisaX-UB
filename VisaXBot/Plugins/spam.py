@@ -27,7 +27,7 @@ async def spammer(e):
 @bot.on(visa_cmd(pattern="bigspam"))
 @bot.on(sudo_cmd(pattern="bigspam", allow_sudo=True))
 async def bigspam(visa):
-    if not visa.text[0].isalpha() and deadly.text[0] not in ("/", "#", "@", "!"):
+    if not visa.text[0].isalpha() and visa.text[0] not in ("/", "#", "@", "!"):
         visa_msg = visa.text
         VisaXBot_count = int(visa_msg[9:13])
         visa_spam = str(visa.text[13:])
