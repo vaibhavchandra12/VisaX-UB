@@ -16,15 +16,15 @@ if not os.path.isdir("./temp"):
     os.makedirs("./temp")
 
 
-@bot.on(deadly_cmd(pattern="stoi$"))
+@bot.on(visa_cmd(pattern="stoi$"))
 @bot.on(sudo_cmd(pattern="stoi$", allow_sudo=True))
-async def _(deadly):
-    if deadly.fwd_from:
+async def _(visa):
+    if visa.fwd_from:
         return
-    reply_to_id = deadly.message.id
-    if deadly.reply_to_msg_id:
-        reply_to_id = deadly.reply_to_msg_id
-    event = await eor(deadly, "Converting.....")
+    reply_to_id = visa.message.id
+    if visa.reply_to_msg_id:
+        reply_to_id = visa.reply_to_msg_id
+    event = await eor(visa, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -33,11 +33,11 @@ async def _(deadly):
         reply_message = await event.get_reply_message()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await deadly.client.download_media(
+        downloaded_file_name = await visa.client.download_media(
             reply_message, downloaded_file_name
         )
         if os.path.exists(downloaded_file_name):
-            caat = await deadly.client.send_file(
+            caat = await visa.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -51,15 +51,15 @@ async def _(deadly):
         await event.edit(f"Syntax : `{hl}stoi` reply to a Telegram normal sticker")
 
 
-@bot.on(deadly_cmd(pattern="itos$"))
+@bot.on(visa_cmd(pattern="itos$"))
 @bot.on(sudo_cmd(pattern="itos$", allow_sudo=True))
-async def _(deadly):
-    if deadly.fwd_from:
+async def _(visa):
+    if visa.fwd_from:
         return
-    reply_to_id = deadly.message.id
-    if deadly.reply_to_msg_id:
-        reply_to_id = deadly.reply_to_msg_id
-    event = await eor(deadly, "Converting.....")
+    reply_to_id = visa.message.id
+    if visa.reply_to_msg_id:
+        reply_to_id = visa.reply_to_msg_id
+    event = await eor(visa, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -68,11 +68,11 @@ async def _(deadly):
         reply_message = await event.get_reply_message()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await deadly.client.download_media(
+        downloaded_file_name = await visa.client.download_media(
             reply_message, downloaded_file_name
         )
         if os.path.exists(downloaded_file_name):
-            caat = await deadly.client.send_file(
+            caat = await visa.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -93,7 +93,7 @@ async def silently_send_message(conv, text):
     return response
 
 
-@bot.on(deadly_cmd(pattern="ttf ?(.*)"))
+@bot.on(visa_cmd(pattern="ttf ?(.*)"))
 @bot.on(sudo_cmd(pattern="ttf ?(.*)", allow_sudo=True))
 async def get(event):
     if event.fwd_from:
@@ -113,7 +113,7 @@ async def get(event):
         await eod(event, f"Reply to text message as `{hl}ttf <file name>`")
 
 
-@bot.on(deadly_cmd(pattern="ftoi$"))
+@bot.on(visa_cmd(pattern="ftoi$"))
 @bot.on(sudo_cmd(pattern="ftoi$", allow_sudo=True))
 async def on_file_to_photo(event):
     if event.fwd_from:
@@ -149,36 +149,36 @@ async def on_file_to_photo(event):
     await hbot.delete()
 
 
-@bot.on(deadly_cmd(pattern="gif$"))
+@bot.on(visa_cmd(pattern="gif$"))
 @bot.on(sudo_cmd(pattern="gif$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    deadlyreply = await event.get_reply_message()
-    if not deadlyreply or not deadlyreply.media or not deadlyreply.media.document:
+    visareply = await event.get_reply_message()
+    if not visareply or not visareply.media or not visareply.media.document:
         return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
-    if deadlyreply.media.document.mime_type != "application/x-tgsticker":
+    if visareply.media.document.mime_type != "application/x-tgsticker":
         return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
     reply_to_id = event.message
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
     chat = "@tgstogifbot"
-    deadlyevent = await edit_or_reply(event, "`Converting to gif ...`")
+    visaevent = await edit_or_reply(event, "`Converting to gif ...`")
     async with bot.conversation(chat) as conv:
         try:
             await silently_send_message(conv, "/start")
-            await bot.send_file(chat, deadlyreply.media)
+            await bot.send_file(chat, visareply.media)
             response = await conv.get_response()
             await bot.send_read_acknowledge(conv.chat_id)
             if response.text.startswith("Send me an animated sticker!"):
-                return await deadlyevent.edit("`This file is not supported`")
-            deadlyresponse = response if response.media else await conv.get_response()
+                return await visaevent.edit("`This file is not supported`")
+            visaresponse = response if response.media else await conv.get_response()
             await bot.send_read_acknowledge(conv.chat_id)
-            deadlyfile = Path(await event.client.download_media(deadlyresponse, "./temp/"))
-            deadlygif = Path(await unzip(deadlyfile))
+            visafile = Path(await event.client.download_media(visaresponse, "./temp/"))
+            visagif = Path(await unzip(visafile))
             kraken = await bot.send_file(
                 event.chat_id,
-                deadlygif,
+                visagif,
                 support_streaming=True,
                 force_document=False,
                 reply_to=reply_to_id,
@@ -193,16 +193,16 @@ async def _(event):
                     unsave=True,
                 )
             )
-            await deadlyevent.delete()
-            for files in (deadlygif, deadlyfile):
+            await visaevent.delete()
+            for files in (visagif, visafile):
                 if files and os.path.exists(files):
                     os.remove(files)
         except YouBlockedUserError:
-            await deadlyevent.edit("Unblock @tgstogifbot")
+            await visaevent.edit("Unblock @tgstogifbot")
             return
 
 
-@bot.on(deadly_cmd(pattern="nfc ?(.*)"))
+@bot.on(visa_cmd(pattern="nfc ?(.*)"))
 @bot.on(sudo_cmd(pattern="nfc ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
