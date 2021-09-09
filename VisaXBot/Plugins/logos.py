@@ -10,20 +10,20 @@ from . import *
 
 PICS_STR = []
 
-@bot.on(deadly_cmd(pattern=r"logo ?(.*)"))
+@bot.on(visa_cmd(pattern=r"logo ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"logo ?(.*)", allow_sudo=True))
-async def lg1(deadlyevent):
-    event = await eor(deadlyevent, "`Processing.....`")
-    fnt = await get_font_file(deadlyevent.client, "@HELL_FRONTS")
-    if deadlyevent.reply_to_msg_id:
-        rply = await deadlyevent.get_reply_message()
+async def lg1(visaevent):
+    event = await eor(visaevent, "`Processing.....`")
+    fnt = await get_font_file(visaevent.client, "@HELL_FRONTS")
+    if visaevent.reply_to_msg_id:
+        rply = await visaevent.get_reply_message()
         logo_ = await rply.download_media()
     else:
         async for i in bot.iter_messages("@HELLBOT_LOGOS", filter=InputMessagesFilterPhotos):
     	    PICS_STR.append(i)
         pic = random.choice(PICS_STR)
         logo_ = await pic.download_media()
-    text = deadlyevent.pattern_match.group(1)
+    text = visaevent.pattern_match.group(1)
     if len(text) <= 8:
         font_size_ = 150
         strik = 10
@@ -57,9 +57,9 @@ async def lg1(deadlyevent):
     file_name = "VisaXBot.png"
     img.save(file_name, "png")
     await bot.send_file(
-        deadlyevent.chat_id,
+        visaevent.chat_id,
         file_name,
-        caption=f"**Made By :** {deadly_mention}",
+        caption=f"**Made By :** {visa_mention}",
     )
     await event.delete()
     try:
