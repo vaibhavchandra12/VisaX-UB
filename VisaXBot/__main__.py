@@ -10,7 +10,7 @@ from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRe
 from VisaXBot import LOGS, bot, tbot
 from VisaXBot.config import Config
 from VisaXBot.utils import load_module
-from VisaXBot.version import __visa__ as visaver
+from VisaXBot.version import visaversion as visaver
 hl = Config.HANDLER
 VISA_PIC = Config.ALIVE_PIC or "https://telegra.ph/file/a03c9f49c8bcc2356fd1c.jpg"
 
